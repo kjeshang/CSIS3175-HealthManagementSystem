@@ -1,42 +1,20 @@
 package com.example.healthmanagementapp.model.doctor;
 
-public class Doctor {
+import com.example.healthmanagementapp.model.User;
 
-    private String id;
-    private String name;
-    private String password;
+public class Doctor extends User {
+
     private String postalCode;
     private String licenseNumber;
 
-    public Doctor(){}
-
     public Doctor(String id, String name, String password, String postalCode, String licenseNumber) {
-        setId(id);
-        setName(name);
-        setPassword(password);
+        super(id, name, password);
         setPostalCode(postalCode);
         setLicenseNumber(licenseNumber);
     }
 
-    public String getId() {
-        return id;
-    }
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
+    public Doctor(String id, String name, String password) {
+        super(id, name, password);
     }
 
     public String getPostalCode() {
@@ -53,7 +31,8 @@ public class Doctor {
         this.licenseNumber = licenseNumber;
     }
 
-    public boolean checkDoctor(){
+    @Override
+    public boolean checkUser() {
         if(getId().equals("") || getName().equals("") || getPassword().equals("") || getLicenseNumber().equals("")){
             return false;
         }
@@ -64,10 +43,13 @@ public class Doctor {
 
     @Override
     public String toString() {
+        return "Doctor: " + super.toString();
+    }
+
+    @Override
+    public String display() {
         return "*** Doctor ***\n" +
-                "ID: " + getId() + "\n" +
-                "Name: " + getName() + "\n" +
-                "Password: " + getPassword() + "\n" +
+                super.display() + "\n" +
                 "Postal Code: " + getPostalCode() + "\n" +
                 "License Number: " + getLicenseNumber();
     }

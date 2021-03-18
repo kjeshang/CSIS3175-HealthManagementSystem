@@ -11,9 +11,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.healthmanagementapp.R;
-import com.example.healthmanagementapp.dao.CashierDAO;
-import com.example.healthmanagementapp.dao.DoctorDAO;
-import com.example.healthmanagementapp.dao.PatientDAO;
+import com.example.healthmanagementapp.dao.DatabaseHelper;
 import com.example.healthmanagementapp.model.cashier.Cashier;
 import com.example.healthmanagementapp.model.doctor.Doctor;
 import com.example.healthmanagementapp.model.patient.Disease;
@@ -36,22 +34,17 @@ public class SignUpActivity extends AppCompatActivity {
     Patient patient;
     Disease disease;
     int diseaseId;
-    PatientDAO patientDAO;
-
     Doctor doctor;
-    DoctorDAO doctorDAO;
-
     Cashier cashier;
-    CashierDAO cashierDAO;
+
+    DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        patientDAO = new PatientDAO(this);
-        doctorDAO = new DoctorDAO(this);
-        cashierDAO = new CashierDAO(this);
+        databaseHelper = DatabaseHelper.getInstance(this);
 
         SignUp_etUserID = findViewById(R.id.SignUp_etUserID);
         SignUp_etPassword = findViewById(R.id.SignUp_etPassword);
@@ -134,8 +127,8 @@ public class SignUpActivity extends AppCompatActivity {
                 // **************************** Patient ************************************************
                 if(SignUp_rdbPatient.isChecked()){
                     patient = createPatient();
-                    boolean validPatient = patient.checkPatient();
-                    boolean patientExists = patientDAO.checkIfPatientExists(patient.getId(),patient.getPassword());
+                    boolean validPatient = patient.checkUser();
+                    boolean patientExists = databaseHelper.checkIfPatientExists(patient.getId(),patient.getPassword());
                     if(validPatient == false){
                         Toast.makeText(SignUpActivity.this,"All Patient information must be provided",Toast.LENGTH_LONG).show();
                     }
@@ -144,17 +137,17 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                     else{
                         disease = createDisease(patient);
-                        patientDAO.insertPatient(patient);
-                        patientDAO.insertDisease(disease);
-                        Toast.makeText(SignUpActivity.this,patient.toString() + "\n" + disease.toString(),Toast.LENGTH_LONG).show();
+                        databaseHelper.insertPatient(patient);
+                        databaseHelper.insertDisease(disease);
+                        Toast.makeText(SignUpActivity.this,patient.display() + "\n" + disease.toString(),Toast.LENGTH_LONG).show();
                         startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
                     }
                 }
                 // **************************** Doctor ************************************************
                 if(SignUp_rdbDoctor.isChecked()){
                     doctor = createDoctor();
-                    boolean validDoctor = doctor.checkDoctor();
-                    boolean doctorExists = doctorDAO.checkIfDoctorExists(doctor.getId(),doctor.getPassword());
+                    boolean validDoctor = doctor.checkUser();
+                    boolean doctorExists = databaseHelper.checkIfDoctorExists(doctor.getId(),doctor.getPassword());
                     if(validDoctor == false){
                         Toast.makeText(SignUpActivity.this,"All Doctor information must be provided",Toast.LENGTH_LONG).show();
                     }
@@ -162,16 +155,16 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(SignUpActivity.this,"Doctor already registered with Health Buddy",Toast.LENGTH_LONG).show();
                     }
                     else{
-                        doctorDAO.insertDoctor(doctor);
-                        Toast.makeText(SignUpActivity.this,doctor.toString(),Toast.LENGTH_LONG).show();
+                        databaseHelper.insertDoctor(doctor);
+                        Toast.makeText(SignUpActivity.this,doctor.display(),Toast.LENGTH_LONG).show();
                         startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
                     }
                 }
                 // **************************** Cashier ************************************************
                 if(SignUp_rdbCashier.isChecked()){
                     cashier = createCashier();
-                    boolean validCashier = cashier.checkCashier();
-                    boolean cashierExists = cashierDAO.checkIfCashierExists(cashier.getId(),cashier.getPassword());
+                    boolean validCashier = cashier.checkUser();
+                    boolean cashierExists = databaseHelper.checkIfCashierExists(cashier.getId(),cashier.getPassword());
                     if(validCashier == false){
                         Toast.makeText(SignUpActivity.this,"All Cashier information must be provided",Toast.LENGTH_LONG).show();
                     }
@@ -179,8 +172,8 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(SignUpActivity.this,"Cashier already registered with Health Buddy",Toast.LENGTH_LONG).show();
                     }
                     else{
-                        cashierDAO.insertCashier(cashier);
-                        Toast.makeText(SignUpActivity.this,cashier.toString(),Toast.LENGTH_LONG).show();
+                        databaseHelper.insertCashier(cashier);
+                        Toast.makeText(SignUpActivity.this,cashier.display(),Toast.LENGTH_LONG).show();
                         startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
                     }
                 }

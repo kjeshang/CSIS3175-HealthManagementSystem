@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.healthmanagementapp.R;
 import com.example.healthmanagementapp.UI.MainActivity;
-import com.example.healthmanagementapp.dao.PatientDAO;
+import com.example.healthmanagementapp.dao.DatabaseHelper;
 import com.example.healthmanagementapp.model.patient.Disease;
 import com.example.healthmanagementapp.model.patient.Patient;
 
@@ -22,7 +22,7 @@ public class PatientAccount extends AppCompatActivity {
     Patient patient;
     Disease disease;
 
-    PatientDAO patientDAO;
+    DatabaseHelper databaseHelper;
 
     TextView PatientAccount_tvPatientName;
     EditText PatientAccount_etAllergies;
@@ -35,7 +35,7 @@ public class PatientAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_account);
 
-        patientDAO = new PatientDAO(this);
+        databaseHelper = DatabaseHelper.getInstance(this);
 
         SharedPreferences preference = getSharedPreferences("user",MODE_PRIVATE);
         patientId = preference.getString("patientId",null);
@@ -46,8 +46,8 @@ public class PatientAccount extends AppCompatActivity {
         PatientAccount_btnLogout = findViewById(R.id.PatientAccount_btnLogout);
         PatientAccount_btnInfo = findViewById(R.id.PatientAccount_btnInfo);
 
-        patient = patientDAO.getPatientById(patientId);
-        disease = patientDAO.getDiseaseByPatientId(patientId);
+        patient = databaseHelper.getPatientById(patientId);
+        disease = databaseHelper.getDiseaseByPatientId(patientId);
 
         PatientAccount_tvPatientName.setText(patient.getName());
         PatientAccount_etAllergies.setText(disease.getAllergy());

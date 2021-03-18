@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.healthmanagementapp.R;
 import com.example.healthmanagementapp.UI.MainActivity;
-import com.example.healthmanagementapp.dao.DoctorDAO;
+import com.example.healthmanagementapp.dao.DatabaseHelper;
 import com.example.healthmanagementapp.model.doctor.Doctor;
 
 public class DoctorAccount extends AppCompatActivity {
@@ -20,7 +20,7 @@ public class DoctorAccount extends AppCompatActivity {
     String doctorId;
     Doctor doctor;
 
-    DoctorDAO doctorDAO;
+    DatabaseHelper databaseHelper;
 
     TextView DoctorAccount_tvDoctorName;
     EditText DoctorAccount_etDoctorLicense;
@@ -33,7 +33,7 @@ public class DoctorAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_account);
 
-        doctorDAO = new DoctorDAO(this);
+        databaseHelper = DatabaseHelper.getInstance(this);
 
         SharedPreferences preference = getSharedPreferences("user",MODE_PRIVATE);
         doctorId = preference.getString("doctorId",null);
@@ -44,7 +44,7 @@ public class DoctorAccount extends AppCompatActivity {
         DoctorAccount_btnLogOut = findViewById(R.id.DoctorAccount_btnLogOut);
         DoctorAccount_btnInfo = findViewById(R.id.DoctorAccount_btnInfo);
 
-        doctor = doctorDAO.getDoctorById(doctorId);
+        doctor = databaseHelper.getDoctorById(doctorId);
         DoctorAccount_tvDoctorName.setText(doctor.getName());
         DoctorAccount_etDoctorLicense.setText(doctor.getLicenseNumber());
         DoctorAccount_etDoctorPostal.setText(doctor.getPostalCode());

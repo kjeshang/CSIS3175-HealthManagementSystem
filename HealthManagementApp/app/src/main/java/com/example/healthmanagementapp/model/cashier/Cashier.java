@@ -1,54 +1,26 @@
 package com.example.healthmanagementapp.model.cashier;
 
-public class Cashier {
+import com.example.healthmanagementapp.model.User;
 
-    private String id;
-    private String name;
-    private String password;
-
-    public Cashier(){}
+public class Cashier extends User {
 
     public Cashier(String id, String name, String password) {
-        setId(id);
-        setName(name);
-        setPassword(password);
+        super(id, name, password);
     }
 
-    public String getId() {
-        return id;
-    }
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public boolean checkCashier(){
-        if(getId().equals("") || getName().equals("") || getPassword().equals("")){
-            return false;
-        }
-        else{
-            return true;
-        }
+    @Override
+    public boolean checkUser() {
+        return super.checkUser();
     }
 
     @Override
     public String toString() {
-        return "*** Cashier ***\n " +
-                "ID: " + getId() + "\n" +
-                "Name: " + getName() + "\n" +
-                "Password: " + getPassword();
+        return "Cashier: " + super.toString();
+    }
+
+    @Override
+    public String display() {
+        return "*** Cashier ***" +
+                super.display();
     }
 }

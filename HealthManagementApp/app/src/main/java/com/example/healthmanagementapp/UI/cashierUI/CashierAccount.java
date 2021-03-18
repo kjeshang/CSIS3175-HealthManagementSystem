@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.healthmanagementapp.R;
 import com.example.healthmanagementapp.UI.MainActivity;
-import com.example.healthmanagementapp.dao.CashierDAO;
+import com.example.healthmanagementapp.dao.DatabaseHelper;
 import com.example.healthmanagementapp.model.cashier.Cashier;
 
 public class CashierAccount extends AppCompatActivity {
@@ -20,7 +20,7 @@ public class CashierAccount extends AppCompatActivity {
     String cashierId;
     Cashier cashier;
 
-    CashierDAO cashierDAO;
+    DatabaseHelper databaseHelper;
 
     TextView CashierAccount_tvCashierName;
     EditText CashierAccount_etBalance;
@@ -32,7 +32,7 @@ public class CashierAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cashier_account);
 
-        cashierDAO = new CashierDAO(this);
+        databaseHelper = DatabaseHelper.getInstance(this);
 
         SharedPreferences preference = getSharedPreferences("user",MODE_PRIVATE);
         cashierId = preference.getString("cashierId",null);
@@ -42,7 +42,7 @@ public class CashierAccount extends AppCompatActivity {
         CashierAccount_btnLogOut = findViewById(R.id.CashierAccount_btnLogOut);
         CashierAccount_btnInfo = findViewById(R.id.CashierAccount_btnInfo);
 
-        cashier = cashierDAO.getCashierById(cashierId);
+        cashier = databaseHelper.getCashierById(cashierId);
         CashierAccount_tvCashierName.setText(cashier.getName());
 
         formatCashierInfo();

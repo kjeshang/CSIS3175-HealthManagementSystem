@@ -64,4 +64,18 @@
     <string name="CashierInfo_tvPassword">Password</string>
     <string name="CashierInfo_tvFullName">Full Name</string>
     <string name="CashierInfo_btnSave">Save Changes</string>
+    <!-- ************** AdminAccount **************** -->
+    <string name="AdminAccount_btnNewUser">Add New User</string>
+    <string name="AdminAccount_btnLogOut">Log Out</string>
+    <string name="AdminAccount_tvRegUsers">Registered Users</string>
+    <!-- ************** AdminPatient **************** -->
+    <string name="AdminPatient_tvPatientDetails">Patient</string>
+    <string name="AdminPatient_tvUserID">User ID</string>
+    <string name="AdminPatient_tvPassword">Password</string>
+    <string name="AdminPatient_tvFullName">Full Name</string>
+    <string name="AdminPatient_tvPostalCode">Postal Code</string>
+    <string name="AdminPatient_tvAllergies">Allergies</string>
+    <string name="AdminPatient_tvDiseases">Diseases</string>
+    <string name="AdminPatient_btnSave">Save Changes</string>
+    <string name="AdminPatient_btnDelete">Delete</string>
 </resources>

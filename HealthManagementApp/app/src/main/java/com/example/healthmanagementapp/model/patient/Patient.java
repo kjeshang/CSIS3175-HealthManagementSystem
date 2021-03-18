@@ -1,40 +1,18 @@
 package com.example.healthmanagementapp.model.patient;
 
-public class Patient {
+import com.example.healthmanagementapp.model.User;
 
-    private String id;
-    private String name;
-    private String password;
+public class Patient extends User {
+
     private String postalCode;
 
-    public Patient(){}
-
-    public Patient(String id, String name, String password, String postalCode){
-        setId(id);
-        setName(name);
-        setPassword(password);
+    public Patient(String id, String name, String password, String postalCode) {
+        super(id, name, password);
         setPostalCode(postalCode);
     }
 
-    public String getId() {
-        return id;
-    }
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
+    public Patient(String id, String name, String password) {
+        super(id, name, password);
     }
 
     public String getPostalCode() {
@@ -44,7 +22,8 @@ public class Patient {
         this.postalCode = postalCode;
     }
 
-    public boolean checkPatient(){
+    @Override
+    public boolean checkUser() {
         if(getId().equals("") || getName().equals("") || getPassword().equals("") || getPostalCode().equals("")){
             return false;
         }
@@ -55,10 +34,13 @@ public class Patient {
 
     @Override
     public String toString() {
+        return "Patient: " + super.toString();
+    }
+
+    @Override
+    public String display() {
         return "*** Patient ***\n" +
-                "ID: " + getId() +"\n" +
-                "Name: " + getName() + "\n" +
-                "Password: " + getPassword() + "\n" +
+                super.display() + "\n" +
                 "Postal Code: " + getPostalCode();
     }
 }

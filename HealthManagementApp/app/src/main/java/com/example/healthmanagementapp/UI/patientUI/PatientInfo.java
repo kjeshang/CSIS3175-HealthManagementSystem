@@ -11,8 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.healthmanagementapp.R;
-import com.example.healthmanagementapp.UI.SignUpActivity;
-import com.example.healthmanagementapp.dao.PatientDAO;
+import com.example.healthmanagementapp.dao.DatabaseHelper;
 import com.example.healthmanagementapp.model.patient.Disease;
 import com.example.healthmanagementapp.model.patient.Patient;
 
@@ -22,7 +21,7 @@ public class PatientInfo extends AppCompatActivity {
     Patient patient;
     Disease disease;
 
-    PatientDAO patientDAO;
+    DatabaseHelper databaseHelper;
 
     EditText PatientInfo_etUserID;
     EditText PatientInfo_etPassword;
@@ -37,7 +36,7 @@ public class PatientInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_info);
 
-        patientDAO = new PatientDAO(this);
+        databaseHelper = DatabaseHelper.getInstance(this);
 
         SharedPreferences preference = getSharedPreferences("user",MODE_PRIVATE);
         patientId = preference.getString("patientId",null);
@@ -50,8 +49,8 @@ public class PatientInfo extends AppCompatActivity {
         PatientInfo_etDiseases = findViewById(R.id.PatientInfo_etDiseases);
         PatientInfo_btnSave = findViewById(R.id.PatientInfo_btnSave);
 
-        patient = patientDAO.getPatientById(patientId);
-        disease = patientDAO.getDiseaseByPatientId(patientId);
+        patient = databaseHelper.getPatientById(patientId);
+        disease = databaseHelper.getDiseaseByPatientId(patientId);
 
         PatientInfo_etUserID.setText(patient.getId());
         formatInfo();
@@ -66,9 +65,9 @@ public class PatientInfo extends AppCompatActivity {
             public void onClick(View v) {
                 createUpdatedPatient();
                 createUpdatedDisease();
-                patientDAO.updatePatient(patient);
-                patientDAO.updateDisease(disease);
-                Toast.makeText(PatientInfo.this,patient.toString() + "\n" + disease.toString(),Toast.LENGTH_LONG).show();
+                databaseHelper.updatePatient(patient);
+                databaseHelper.updateDisease(disease);
+                Toast.makeText(PatientInfo.this,patient.display() + "\n" + disease.toString(),Toast.LENGTH_LONG).show();
                 startActivity(new Intent(PatientInfo.this,PatientAccount.class));
             }
         });

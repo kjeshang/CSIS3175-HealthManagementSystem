@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.healthmanagementapp.R;
-import com.example.healthmanagementapp.dao.CashierDAO;
+import com.example.healthmanagementapp.dao.DatabaseHelper;
 import com.example.healthmanagementapp.model.cashier.Cashier;
 
 public class CashierInfo extends AppCompatActivity {
@@ -19,7 +19,7 @@ public class CashierInfo extends AppCompatActivity {
     String cashierId;
     Cashier cashier;
 
-    CashierDAO cashierDAO;
+    DatabaseHelper databaseHelper;
 
     EditText CashierInfo_etUserID;
     EditText CashierInfo_etPassword;
@@ -31,7 +31,7 @@ public class CashierInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cashier_info);
 
-        cashierDAO = new CashierDAO(this);
+        databaseHelper = DatabaseHelper.getInstance(this);
 
         SharedPreferences preference = getSharedPreferences("user",MODE_PRIVATE);
         cashierId = preference.getString("cashierId",null);
@@ -41,7 +41,7 @@ public class CashierInfo extends AppCompatActivity {
         CashierInfo_etFullName = findViewById(R.id.CashierInfo_etFullName);
         CashierInfo_btnSave = findViewById(R.id.CashierInfo_btnSave);
 
-        cashier = cashierDAO.getCashierById(cashierId);
+        cashier = databaseHelper.getCashierById(cashierId);
 
         CashierInfo_etUserID.setText(cashier.getId());
         formatInfo();
@@ -52,8 +52,8 @@ public class CashierInfo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createUpdatedCashier();
-                cashierDAO.updateCashier(cashier);
-                Toast.makeText(CashierInfo.this,cashier.toString(),Toast.LENGTH_LONG).show();
+                databaseHelper.updateCashier(cashier);
+                Toast.makeText(CashierInfo.this,cashier.display(),Toast.LENGTH_LONG).show();
                 startActivity(new Intent(CashierInfo.this,CashierAccount.class));
             }
         });

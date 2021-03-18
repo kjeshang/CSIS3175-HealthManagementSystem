@@ -11,8 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.healthmanagementapp.R;
-import com.example.healthmanagementapp.UI.patientUI.PatientInfo;
-import com.example.healthmanagementapp.dao.DoctorDAO;
+import com.example.healthmanagementapp.dao.DatabaseHelper;
 import com.example.healthmanagementapp.model.doctor.Doctor;
 
 public class DoctorInfo extends AppCompatActivity {
@@ -20,7 +19,7 @@ public class DoctorInfo extends AppCompatActivity {
     String doctorId;
     Doctor doctor;
 
-    DoctorDAO doctorDAO;
+    DatabaseHelper databaseHelper;
 
     EditText DoctorInfo_etUserID;
     EditText DoctorInfo_etPassword;
@@ -34,7 +33,7 @@ public class DoctorInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_info);
 
-        doctorDAO = new DoctorDAO(this);
+        databaseHelper = DatabaseHelper.getInstance(this);
 
         SharedPreferences preference = getSharedPreferences("user",MODE_PRIVATE);
         doctorId = preference.getString("doctorId",null);
@@ -46,7 +45,7 @@ public class DoctorInfo extends AppCompatActivity {
         DoctorInfo_etLicenseNumber = findViewById(R.id.DoctorInfo_etLicenseNumber);
         DoctorInfo_btnSave = findViewById(R.id.DoctorInfo_btnSave);
 
-        doctor = doctorDAO.getDoctorById(doctorId);
+        doctor = databaseHelper.getDoctorById(doctorId);
 
         DoctorInfo_etUserID.setText(doctor.getId());
         formatInfo();
@@ -59,8 +58,8 @@ public class DoctorInfo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createUpdatedDoctor();
-                doctorDAO.updateDoctor(doctor);
-                Toast.makeText(DoctorInfo.this,doctor.toString(),Toast.LENGTH_LONG).show();
+                databaseHelper.updateDoctor(doctor);
+                Toast.makeText(DoctorInfo.this,doctor.display(),Toast.LENGTH_LONG).show();
                 startActivity(new Intent(DoctorInfo.this,DoctorAccount.class));
             }
         });
