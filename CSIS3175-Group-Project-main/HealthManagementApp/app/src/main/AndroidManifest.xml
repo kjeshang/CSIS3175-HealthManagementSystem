@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.healthmanagementapp">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.HealthManagementApp">
+        <activity android:name=".UI.adminUI.AdminCashier"></activity>
+        <activity android:name=".UI.adminUI.AdminDoctor" />
+        <activity android:name=".UI.adminUI.AdminPatient" />
+        <activity android:name=".UI.adminUI.AdminAccount" />
+        <activity android:name=".UI.cashierUI.CashierInfo" />
+        <activity android:name=".UI.doctorUI.DoctorInfo" />
+        <activity android:name=".UI.patientUI.PatientInfo" />
+        <activity android:name=".UI.cashierUI.CashierAccount" />
+        <activity android:name=".UI.doctorUI.DoctorAccount" />
+        <activity android:name=".UI.patientUI.PatientAccount" />
+        <activity android:name=".UI.LoginActivity" />
+        <activity android:name=".UI.SignUpActivity" />
+        <activity android:name=".UI.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
