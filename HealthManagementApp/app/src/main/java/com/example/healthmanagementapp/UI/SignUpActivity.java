@@ -57,6 +57,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         SignUp_etAllergies.setVisibility(View.INVISIBLE);
         SignUp_etDiseases.setVisibility(View.INVISIBLE);
+        SignUp_etPostalCode.setVisibility(View.INVISIBLE);
         SignUp_etLicense.setVisibility(View.INVISIBLE);
 
         SignUp_rdbPatient.setOnClickListener(new View.OnClickListener() {
@@ -193,7 +194,7 @@ public class SignUpActivity extends AppCompatActivity {
         String password = SignUp_etPassword.getText().toString();
         String licenseNumber = SignUp_etLicense.getText().toString();
         String postalCode = SignUp_etPostalCode.getText().toString();
-        doctor = new Doctor(id,fullName,password,licenseNumber,postalCode);
+        doctor = new Doctor(id,fullName,password,postalCode,licenseNumber);
         return doctor;
     }
 

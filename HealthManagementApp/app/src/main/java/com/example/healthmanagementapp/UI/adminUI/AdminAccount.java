@@ -84,6 +84,13 @@ public class AdminAccount extends AppCompatActivity {
             }
         });
 
+        AdminAccount_btnNewUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminAccount.this,AdminAddUser.class));
+            }
+        });
+
         AdminAccount_btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
