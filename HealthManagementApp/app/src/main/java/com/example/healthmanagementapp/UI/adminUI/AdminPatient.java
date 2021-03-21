@@ -12,14 +12,12 @@ import android.widget.Toast;
 
 import com.example.healthmanagementapp.R;
 import com.example.healthmanagementapp.dao.DatabaseHelper;
-import com.example.healthmanagementapp.model.patient.Disease;
 import com.example.healthmanagementapp.model.patient.Patient;
 
 public class AdminPatient extends AppCompatActivity {
 
     String patientId;
     Patient patient;
-    Disease disease;
 
     DatabaseHelper databaseHelper;
 
@@ -43,7 +41,6 @@ public class AdminPatient extends AppCompatActivity {
         patientId = adminPreference.getString("patientId",null);
 
         patient = databaseHelper.getPatientById(patientId);
-        disease = databaseHelper.getDiseaseByPatientId(patientId);
 
         AdminPatient_etUserID = findViewById(R.id.AdminPatient_etUserID);
         AdminPatient_etPassword = findViewById(R.id.AdminPatient_etPassword);
@@ -55,20 +52,19 @@ public class AdminPatient extends AppCompatActivity {
         AdminPatient_btnDelete = findViewById(R.id.AdminPatient_btnDelete);
 
         AdminPatient_etUserID.setText(patient.getId());
+        formatInfo();
         AdminPatient_etPassword.setText(patient.getPassword());
         AdminPatient_etFullName.setText(patient.getName());
         AdminPatient_etPostalCode.setText(patient.getPostalCode());
-        AdminPatient_etAllergies.setText(disease.getAllergy());
-        AdminPatient_etDiseases.setText(disease.getDiseaseInfo());
+        AdminPatient_etAllergies.setText(patient.getAllergies());
+        AdminPatient_etDiseases.setText(patient.getDiseases());
 
         AdminPatient_btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createUpdatedPatient();
-                createUpdatedDisease(patient);
                 databaseHelper.updatePatient(patient);
-                databaseHelper.updateDisease(disease);
-                Toast.makeText(AdminPatient.this,patient.display() + "\n" + disease.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(AdminPatient.this,patient.display() + "",Toast.LENGTH_LONG).show();
                 startActivity(new Intent(AdminPatient.this,AdminAccount.class));
             }
         });
@@ -76,37 +72,29 @@ public class AdminPatient extends AppCompatActivity {
         AdminPatient_btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //boolean isDiseaseDeleted = databaseHelper.deleteDisease(disease);
-                boolean isPatientDeleted = databaseHelper.deletePatient(patient);
-                if(isPatientDeleted == true){
-                    Toast.makeText(AdminPatient.this,"Patient & Disease deleted",Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(AdminPatient.this,AdminAccount.class));
-                }
-                else{
-                    Toast.makeText(AdminPatient.this,"Patient & Disease not deleted",Toast.LENGTH_LONG).show();
-                }
+                databaseHelper.deletePatient(patient);
+                Toast.makeText(AdminPatient.this,"Patient deleted",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(AdminPatient.this,AdminAccount.class));
             }
         });
     }
 
     private void createUpdatedPatient(){
-        String patientId = AdminPatient_etUserID.getText().toString();
         String patientName = AdminPatient_etFullName.getText().toString();
         String patientPassword = AdminPatient_etPassword.getText().toString();
         String patientPostalCode = AdminPatient_etPostalCode.getText().toString();
-        patient.setId(patientId);
-        patient.setName(patientName);
-        patient.setPassword(patientPassword);
-        patient.setPostalCode(patientPassword);
-        patient.setPostalCode(patientPostalCode);
-    }
-
-    private void createUpdatedDisease(Patient patient){
-        String patientId = patient.getId();
         String allergies = AdminPatient_etAllergies.getText().toString();
         String diseases = AdminPatient_etDiseases.getText().toString();
-        disease.setPatientId(patientId);
-        disease.setAllergy(allergies);
-        disease.setDiseaseInfo(diseases);
+        patient.setName(patientName);
+        patient.setPassword(patientPassword);
+        patient.setPostalCode(patientPostalCode);
+        patient.setAllergies(allergies);
+        patient.setDiseases(diseases);
+    }
+
+    private void formatInfo(){
+        AdminPatient_etUserID.setFocusable(false);
+        AdminPatient_etUserID.setFocusableInTouchMode(false);
+        AdminPatient_etUserID.setClickable(false);
     }
 }

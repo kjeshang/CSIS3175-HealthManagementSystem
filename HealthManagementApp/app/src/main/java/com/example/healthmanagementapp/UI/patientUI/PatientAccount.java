@@ -13,14 +13,12 @@ import android.widget.TextView;
 import com.example.healthmanagementapp.R;
 import com.example.healthmanagementapp.UI.MainActivity;
 import com.example.healthmanagementapp.dao.DatabaseHelper;
-import com.example.healthmanagementapp.model.patient.Disease;
 import com.example.healthmanagementapp.model.patient.Patient;
 
 public class PatientAccount extends AppCompatActivity {
 
     String patientId;
     Patient patient;
-    Disease disease;
 
     DatabaseHelper databaseHelper;
 
@@ -47,11 +45,10 @@ public class PatientAccount extends AppCompatActivity {
         PatientAccount_btnInfo = findViewById(R.id.PatientAccount_btnInfo);
 
         patient = databaseHelper.getPatientById(patientId);
-        disease = databaseHelper.getDiseaseByPatientId(patientId);
 
         PatientAccount_tvPatientName.setText(patient.getName());
-        PatientAccount_etAllergies.setText(disease.getAllergy());
-        PatientAccount_etADiseases.setText(disease.getDiseaseInfo());
+        PatientAccount_etAllergies.setText(patient.getAllergies());
+        PatientAccount_etADiseases.setText(patient.getDiseases());
 
         formatDiseaseInfo();
 
