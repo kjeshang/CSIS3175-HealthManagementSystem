@@ -523,6 +523,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // ------------------------------------------------------------------
 
+    public List<String> fillPatientsWInquiry(String doctorID){
+        List<String> list= new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + PATIENT_ID_COL + " FROM " + COMPLAINT_TABLE + " WHERE " + DOCTOR_ID_COL + " = '" + doctorID + "';";
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor.moveToFirst()){
+            do{
+                list.add(cursor.getString(1));
+            }while(cursor.moveToNext());
+        }
+        return list;
+    }
+
     public List<User> getAllUsers(){
         List<User> list = new ArrayList<>();
         String queryPatient = "SELECT * FROM " + PATIENT_TABLE + ";";
