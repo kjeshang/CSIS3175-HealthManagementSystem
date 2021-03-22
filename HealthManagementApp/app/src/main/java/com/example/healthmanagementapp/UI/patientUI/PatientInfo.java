@@ -12,12 +12,14 @@ import android.widget.Toast;
 
 import com.example.healthmanagementapp.R;
 import com.example.healthmanagementapp.dao.DatabaseHelper;
+import com.example.healthmanagementapp.model.patient.Disease;
 import com.example.healthmanagementapp.model.patient.Patient;
 
 public class PatientInfo extends AppCompatActivity {
 
     String patientId;
     Patient patient;
+    Disease disease;
 
     DatabaseHelper databaseHelper;
 
@@ -48,21 +50,24 @@ public class PatientInfo extends AppCompatActivity {
         PatientInfo_btnSave = findViewById(R.id.PatientInfo_btnSave);
 
         patient = databaseHelper.getPatientById(patientId);
+        disease = databaseHelper.getDiseaseByPatientId(patientId);
 
         PatientInfo_etUserID.setText(patient.getId());
         formatInfo();
         PatientInfo_etPassword.setText(patient.getPassword());
         PatientInfo_etFullName.setText(patient.getName());
         PatientInfo_etPostalCode.setText(patient.getPostalCode());
-        PatientInfo_etAllergies.setText(patient.getAllergies());
-        PatientInfo_etDiseases.setText(patient.getDiseases());
+        PatientInfo_etAllergies.setText(disease.getAllergy());
+        PatientInfo_etDiseases.setText(disease.getDiseaseInfo());
 
         PatientInfo_btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createUpdatedPatient();
+                createUpdatedDisease();
                 databaseHelper.updatePatient(patient);
-                Toast.makeText(PatientInfo.this,patient.display() + "",Toast.LENGTH_LONG).show();
+                databaseHelper.updateDisease(disease);
+                Toast.makeText(PatientInfo.this,patient.display() + "\n" + disease.toString(),Toast.LENGTH_LONG).show();
                 startActivity(new Intent(PatientInfo.this,PatientAccount.class));
             }
         });
@@ -78,12 +83,15 @@ public class PatientInfo extends AppCompatActivity {
         String fullName = PatientInfo_etFullName.getText().toString();
         String password = PatientInfo_etPassword.getText().toString();
         String postalCode = PatientInfo_etPostalCode.getText().toString();
-        String allergies = PatientInfo_etAllergies.getText().toString();
-        String diseases = PatientInfo_etDiseases.getText().toString();
         patient.setName(fullName);
         patient.setPassword(password);
         patient.setPostalCode(postalCode);
-        patient.setAllergies(allergies);
-        patient.setDiseases(diseases);
+    }
+
+    private void createUpdatedDisease(){
+        String allergies = PatientInfo_etAllergies.getText().toString();
+        String diseases = PatientInfo_etDiseases.getText().toString();
+        disease.setAllergy(allergies);
+        disease.setDiseaseInfo(diseases);
     }
 }

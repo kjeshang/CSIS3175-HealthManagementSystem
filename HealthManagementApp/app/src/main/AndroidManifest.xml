@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthManagementApp">
-        <activity android:name=".UI.adminUI.AdminAddUser"></activity>
-        <activity android:name=".UI.adminUI.AdminCashier" />
+        <activity android:name=".UI.adminUI.AdminCashier"></activity>
         <activity android:name=".UI.adminUI.AdminDoctor" />
         <activity android:name=".UI.adminUI.AdminPatient" />
         <activity android:name=".UI.adminUI.AdminAccount" />

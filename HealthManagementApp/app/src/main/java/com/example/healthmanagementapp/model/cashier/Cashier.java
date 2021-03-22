@@ -20,7 +20,7 @@ public class Cashier extends User {
 
     @Override
     public String display() {
-        return "*** Cashier ***\n" +
+        return "*** Cashier ***" +
                 super.display();
     }
 }
