@@ -14,7 +14,6 @@ import com.example.healthmanagementapp.R;
 import com.example.healthmanagementapp.dao.DatabaseHelper;
 import com.example.healthmanagementapp.model.cashier.Cashier;
 import com.example.healthmanagementapp.model.doctor.Doctor;
-import com.example.healthmanagementapp.model.patient.Disease;
 import com.example.healthmanagementapp.model.patient.Patient;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -32,8 +31,6 @@ public class SignUpActivity extends AppCompatActivity {
     Button SignUp_btnSignUp;
 
     Patient patient;
-    Disease disease;
-    int diseaseId;
     Doctor doctor;
     Cashier cashier;
 
@@ -60,9 +57,8 @@ public class SignUpActivity extends AppCompatActivity {
 
         SignUp_etAllergies.setVisibility(View.INVISIBLE);
         SignUp_etDiseases.setVisibility(View.INVISIBLE);
+        SignUp_etPostalCode.setVisibility(View.INVISIBLE);
         SignUp_etLicense.setVisibility(View.INVISIBLE);
-
-        diseaseId = 1;
 
         SignUp_rdbPatient.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,10 +132,8 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(SignUpActivity.this,"Patient already registered with Health Buddy",Toast.LENGTH_LONG).show();
                     }
                     else{
-                        disease = createDisease(patient);
                         databaseHelper.insertPatient(patient);
-                        databaseHelper.insertDisease(disease);
-                        Toast.makeText(SignUpActivity.this,patient.display() + "\n" + disease.toString(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(SignUpActivity.this,patient.display() +"",Toast.LENGTH_LONG).show();
                         startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
                     }
                 }
@@ -187,17 +181,10 @@ public class SignUpActivity extends AppCompatActivity {
         String fullName = SignUp_etFullName.getText().toString();
         String password = SignUp_etPassword.getText().toString();
         String postalCode = SignUp_etPostalCode.getText().toString();
-        patient = new Patient(id,fullName,password,postalCode);
-        return patient;
-    }
-
-    private Disease createDisease(Patient patient){
-        Disease disease = null;
         String allergies = SignUp_etAllergies.getText().toString();
-        String diseaseInfo = SignUp_etDiseases.getText().toString();
-        disease = new Disease(diseaseId,patient.getId(),allergies,diseaseInfo);
-        diseaseId++;
-        return disease;
+        String diseases = SignUp_etDiseases.getText().toString();
+        patient = new Patient(id,fullName,password,postalCode,allergies,diseases);
+        return patient;
     }
 
     private Doctor createDoctor(){
@@ -207,7 +194,7 @@ public class SignUpActivity extends AppCompatActivity {
         String password = SignUp_etPassword.getText().toString();
         String licenseNumber = SignUp_etLicense.getText().toString();
         String postalCode = SignUp_etPostalCode.getText().toString();
-        doctor = new Doctor(id,fullName,password,licenseNumber,postalCode);
+        doctor = new Doctor(id,fullName,password,postalCode,licenseNumber);
         return doctor;
     }
 

@@ -123,19 +123,4 @@
         android:text="@string/DoctorAccount_btnInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DoctorAccount_tvPatientInquiries" />
-
-    <ScrollView
-        android:id="@+id/DoctorAccount_svPatientInquiries"
-        android:layout_width="match_parent"
-        android:layout_height="241dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorAccount_tvPatientInquiries">
-
-        <LinearLayout
-            android:id="@+id/DoctorAccount_llPatientsWInquiry"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"/>
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

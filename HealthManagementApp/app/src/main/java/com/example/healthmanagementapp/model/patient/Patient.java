@@ -5,10 +5,14 @@ import com.example.healthmanagementapp.model.User;
 public class Patient extends User {
 
     private String postalCode;
+    private String allergies;
+    private String diseases;
 
-    public Patient(String id, String name, String password, String postalCode) {
+    public Patient(String id, String name, String password, String postalCode, String allergies, String diseases) {
         super(id, name, password);
         setPostalCode(postalCode);
+        setAllergies(allergies);
+        setDiseases(diseases);
     }
 
     public Patient(String id, String name, String password) {
@@ -22,9 +26,23 @@ public class Patient extends User {
         this.postalCode = postalCode;
     }
 
+    public String getAllergies() {
+        return allergies;
+    }
+    public void setAllergies(String allergies) {
+        this.allergies = allergies;
+    }
+
+    public String getDiseases() {
+        return diseases;
+    }
+    public void setDiseases(String diseases) {
+        this.diseases = diseases;
+    }
+
     @Override
     public boolean checkUser() {
-        if(getId().equals("") || getName().equals("") || getPassword().equals("") || getPostalCode().equals("")){
+        if(getId().equals("") || getName().equals("") || getPassword().equals("") || getPostalCode().equals("") || getAllergies().equals("") || getDiseases().equals("")){
             return false;
         }
         else{
@@ -41,6 +59,8 @@ public class Patient extends User {
     public String display() {
         return "*** Patient ***\n" +
                 super.display() + "\n" +
-                "Postal Code: " + getPostalCode();
+                "Postal Code: " + getPostalCode() + "\n" +
+                "Allergies: " + getAllergies() + "\n" +
+                "Diseases: " + getDiseases();
     }
 }
