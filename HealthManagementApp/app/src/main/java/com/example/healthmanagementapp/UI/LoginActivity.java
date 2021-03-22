@@ -38,11 +38,11 @@ public class LoginActivity extends AppCompatActivity {
 
         databaseHelper = DatabaseHelper.getInstance(this);
 
-        boolean adminPrimeExists = databaseHelper.checkIfAdminExists("mehwish","mehwish123");
-        if(adminPrimeExists == false){
-            admin = new Admin("mehwish","Mehwish Bashir","mehwish123");
-            databaseHelper.insertAdmin(admin);
-        }
+//        boolean adminPrimeExists = databaseHelper.checkIfAdminExists("mehwish","mehwish123");
+//        if(adminPrimeExists == false){
+//            admin = new Admin("mehwish","Mehwish Bashir","mehwish123");
+//            databaseHelper.insertAdmin(admin);
+//        }
 
         Login_etUserID = findViewById(R.id.Login_etUserID);
         Login_etPassword = findViewById(R.id.Login_etPassword);

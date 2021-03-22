@@ -78,32 +78,4 @@
     <string name="AdminPatient_tvDiseases">Diseases</string>
     <string name="AdminPatient_btnSave">Save Changes</string>
     <string name="AdminPatient_btnDelete">Delete</string>
-    <!-- ************** AdminDoctor **************** -->
-    <string name="AdminDoctor_tvDoctorDetails">Doctor</string>
-    <string name="AdminDoctor_tvUserID">User ID</string>
-    <string name="AdminDoctor_tvPassword">Password</string>
-    <string name="AdminDoctor_tvFullName">Full Name</string>
-    <string name="AdminDoctor_tvPostalCode">Clinic Postal Code</string>
-    <string name="AdminDoctor_tvLicenseNumber">License Number</string>
-    <string name="AdminDoctor_btnSave">Save Changes</string>
-    <string name="AdminDoctor_btnDelete">Delete</string>
-    <!-- ************** AdminCashier **************** -->
-    <string name="AdminCashier_tvCashierDetails">Cashier</string>
-    <string name="AdminCashier_tvUserID">User ID</string>
-    <string name="AdminCashier_tvPassword">Password</string>
-    <string name="AdminCashier_tvFullName">Full Name</string>
-    <string name="AdminCashier_btnSave">Save Changes</string>
-    <string name="AdminCashier_btnDelete">Delete</string>
-    <!-- ************** AdminAddUser **************** -->
-    <string name="AdminAddUser_etUserID">User ID</string>
-    <string name="AdminAddUser_etPassword">Password</string>
-    <string name="AdminAddUser_rdbPatient">Patient</string>
-    <string name="AdminAddUser_rdbDoctor">Doctor</string>
-    <string name="AdminAddUser_rdbCashier">Cashier</string>
-    <string name="AdminAddUser_etFullName">Full Name</string>
-    <string name="AdminAddUser_etAllergies">Allergies</string>
-    <string name="AdminAddUser_etDiseases">Diseases</string>
-    <string name="AdminAddUser_etPostalCode">Postal Code</string>
-    <string name="AdminAddUser_etLicense">License Number</string>
-    <string name="AdminAddUser_btnAdd">Add User</string>
 </resources>

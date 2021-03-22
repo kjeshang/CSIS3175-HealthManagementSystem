@@ -12,6 +12,7 @@ import com.example.healthmanagementapp.model.User;
 import com.example.healthmanagementapp.model.admin.Admin;
 import com.example.healthmanagementapp.model.cashier.Cashier;
 import com.example.healthmanagementapp.model.doctor.Doctor;
+import com.example.healthmanagementapp.model.patient.Disease;
 import com.example.healthmanagementapp.model.patient.Patient;
 
 import java.util.ArrayList;
@@ -22,75 +23,38 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    // ************** ADMIN ***********************************
-    // CASHIER (AdminID, AdminName, AdminPassword)
-    // Primary Key = AdminID
-    private static final String ADMIN_TABLE = "ADMIN";
-    private static final String ADMIN_ID_COL = "AdminID";
-    private static final String ADMIN_NAME_COL = "AdminName";
-    private static final String ADMIN_PASSWORD_COL = "AdminPassword";
-    private static final String createAdminTable = "CREATE TABLE " + ADMIN_TABLE +
-            "(" +
-                ADMIN_ID_COL + " TEXT PRIMARY KEY, " +
-                ADMIN_NAME_COL + " TEXT, " +
-                ADMIN_PASSWORD_COL + " TEXT" +
-            ");";
-    private static final String dropAdminTable = "DROP TABLE if exists " + ADMIN_TABLE + ";";
-
     // ************** PATIENT *************************************
-    // PATIENT (PatientID, PatientName, PatientPassword, PatientPostalCode)
+    // PATIENT (PatientID, PatientName, PatientPassword, PostalCode)
     // Primary Key = PatientID
-    private static final String PATIENT_TABLE = "PATIENT";
-    private static final String PATIENT_ID_COL = "PatientID";
-    private static final String PATIENT_NAME_COL = "PatientName";
-    private static final String PATIENT_PASSWORD_COL = "PatientPassword";
-    private static final String PATIENT_POSTAL_COL = "PatientPostalCode";
-    private static final String PATIENT_ALLERGIES_COL = "Allergies";
-    private static final String PATIENT_DISEASES_COL = "Diseases";
-    private static final String createPatientTable = "CREATE TABLE " + PATIENT_TABLE +
-            "(" +
-                PATIENT_ID_COL + " TEXT PRIMARY KEY, " +
-                PATIENT_NAME_COL + " TEXT, " +
-                PATIENT_PASSWORD_COL + " TEXT, " +
-                PATIENT_POSTAL_COL + " TEXT, " +
-                PATIENT_ALLERGIES_COL + " TEXT, " +
-                PATIENT_DISEASES_COL + " TEXT" +
-            ");";
-    private static final String dropPatientTable = "DROP TABLE if exists " + PATIENT_TABLE + ";";
+    public static final String PATIENT_TABLE = "PATIENT";
+    public static final String PATIENT_ID_COL = "PatientID";
+    public static final String PATIENT_NAME_COL = "PatientName";
+    public static final String PATIENT_PASSWORD_COL = "PatientPassword";
+    public static final String POSTAL_CODE_COL = "PostalCode";
 
-    // ************** DOCTOR ***********************************
-    // Doctor (DoctorID, DoctorName, DoctorPassword, LicenseNumber, ClinicPostalCode)
-    // Primary Key = DoctorID
-    private static final String DOCTOR_TABLE = "DOCTOR";
-    private static final String DOCTOR_ID_COL = "DoctorID";
-    private static final String DOCTOR_NAME_COL = "DoctorName";
-    private static final String DOCTOR_PASSWORD_COL = "DoctorPassword";
-    private static final String DOCTOR_LICENSE_COL = "LicenseNumber";
-    private static final String DOCTOR_CLINIC_COL = "ClinicPostalCode";
-    private static final String createDoctorTable = "CREATE TABLE " + DOCTOR_TABLE +
-            "(" +
-                DOCTOR_ID_COL + " TEXT PRIMARY KEY, " +
-                DOCTOR_NAME_COL + " TEXT, " +
-                DOCTOR_PASSWORD_COL + " TEXT, " +
-                DOCTOR_LICENSE_COL + " TEXT, " +
-                DOCTOR_CLINIC_COL + " TEXT" +
-            ");";
-    private static final String dropDoctorTable = "DROP TABLE if exists " + DOCTOR_TABLE;
+    public static final String createPatientTable = "CREATE TABLE " + PATIENT_TABLE + "(" +
+            PATIENT_ID_COL + " TEXT PRIMARY KEY, " +
+            PATIENT_NAME_COL + " TEXT, " +
+            PATIENT_PASSWORD_COL + " TEXT, " +
+            POSTAL_CODE_COL + " TEXT);";
+    public static final String dropPatientTable = "DROP TABLE if exists " + PATIENT_TABLE;
 
-    // ************** CASHIER ***********************************
-    // CASHIER (CashierID, CashierName, CashierPassword)
-    // Primary Key = CashierID
-    private static final String CASHIER_TABLE = "CASHIER";
-    private static final String CASHIER_ID_COL = "CashierID";
-    private static final String CASHIER_NAME_COL = "CashierName";
-    private static final String CASHIER_PASSWORD_COL = "CashierPassword";
-    private static final String createCashierTable = "CREATE TABLE " + CASHIER_TABLE +
-            "(" +
-                CASHIER_ID_COL + " TEXT PRIMARY KEY, " +
-                CASHIER_NAME_COL + " TEXT, " +
-                CASHIER_PASSWORD_COL + " TEXT" +
-            ");";
-    private static final String dropCashierTable = "DROP TABLE if exists " + CASHIER_TABLE;
+    // ************** DISEASE *************************************
+    // DISEASE (DiseaseID, PatientID, Allergy, DiseaseHistory)
+    // Primary Key = DiseaseID
+    // Foreign Key = PatientID
+    public static final String DISEASE_TABLE = "DISEASE";
+    public static final String DISEASE_ID_COL = "DiseaseID";
+    public static final String ALLERGY_COL = "Allergy";
+    public static final String DISEASE_HISTORY_COL = "DiseaseHistory";
+
+    public static final String createDiseaseTable = "CREATE TABLE " + DISEASE_TABLE + "(" +
+            DISEASE_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            PATIENT_ID_COL + " TEXT, " +
+            ALLERGY_COL + " TEXT, " +
+            DISEASE_HISTORY_COL + " TEXT, " +
+            "FOREIGN KEY(" + PATIENT_ID_COL + ") REFERENCES " + PATIENT_TABLE + "(" + PATIENT_ID_COL + ") ON DELETE CASCADE);";
+    public static final String dropDiseaseTable = "DROP TABLE if exists " + DISEASE_TABLE;
 
     // ************** CALORIES ***********************************
     // Calories (CaloriesID, PatientID, FoodList, TotalCalories, HealthSuggestion, DateOfConsumption)
@@ -111,6 +75,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             DATE_OF_CONSUMPTION_COL + " DATE, " +
             "FOREIGN KEY(" + PATIENT_ID_COL + ") REFERENCES " + PATIENT_TABLE + "(" + PATIENT_ID_COL + "));";
     public static final String dropCaloriesTable = "DROP TABLE if exists " + CALORIES_TABLE;
+
+    // ************** DOCTOR ***********************************
+    // Doctor (DoctorID, DoctorName, DoctorPassword, LicenseNumber, ClinicPO)
+    // Primary Key = DoctorID
+    public static final String DOCTOR_TABLE = "DOCTOR";
+    public static final String DOCTOR_ID_COL = "DoctorID";
+    public static final String DOCTOR_NAME_COL = "DoctorName";
+    public static final String DOCTOR_PASSWORD_COL = "DoctorPassword";
+    public static final String LICENSE_NUMBER_COL = "LicenseNumber";
+    public static final String CLINIC_PO_COL = "ClinicPO";
+    public static final String createDoctorTable = "CREATE TABLE " + DOCTOR_TABLE + "(" +
+            DOCTOR_ID_COL + " TEXT PRIMARY KEY, " +
+            DOCTOR_NAME_COL + " TEXT, " +
+            DOCTOR_PASSWORD_COL + " TEXT, " +
+            LICENSE_NUMBER_COL + " TEXT, " +
+            CLINIC_PO_COL + " TEXT);";
+    public static final String dropDoctorTable = "DROP TABLE if exists " + DOCTOR_TABLE;
 
     // ************** PATIENT_DR **********************************
     // PATIENT-DOCTOR (PatientID, DoctorID)
@@ -157,6 +138,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "FOREIGN KEY(" + DOCTOR_ID_COL + ") REFERENCES " + DOCTOR_TABLE + "(" + DOCTOR_ID_COL + "));";
     public static final String dropSolutionTable = "DROP TABLE if exists " + SOLUTION_TABLE;
 
+    // ************** CASHIER ***********************************
+    // CASHIER (CashierID, CashierName, CashierPassword)
+    // Primary Key = CashierID
+    public static final String CASHIER_TABLE = "CASHIER";
+    public static final String CASHIER_ID_COL = "CashierID";
+    public static final String CASHIER_NAME_COL = "CashierName";
+    public static final String CASHIER_PASSWORD_COL = "CashierPassword";
+    public static final String createCashierTable = "CREATE TABLE " + CASHIER_TABLE + "(" +
+            CASHIER_ID_COL + " TEXT PRIMARY KEY, " +
+            CASHIER_NAME_COL + " TEXT, " +
+            CASHIER_PASSWORD_COL + " TEXT);";
+    public static final String dropCashierTable = "DROP TABLE if exists " + CASHIER_TABLE;
+
     // ************** PAYMENT ***********************************
     // PAYMENT (CashierID, PatientID, duePayment)
     // Primary Key = (CashierID, PatientID)
@@ -172,10 +166,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "FOREIGN KEY(" + PATIENT_ID_COL + ") REFERENCES " + PATIENT_TABLE + "(" + PATIENT_ID_COL + "));";
     public static final String dropPaymentTable = "DROP TABLE if exists " + PAYMENT_TABLE;
 
+    // ************** ADMIN ***********************************
+    // CASHIER (AdminID, AdminName, AdminPassword)
+    // Primary Key = AdminID
+    public static final String ADMIN_TABLE = "ADMIN";
+    public static final String ADMIN_ID_COL = "AdminID";
+    public static final String ADMIN_NAME_COL = "AdminName";
+    public static final String ADMIN_PASSWORD_COL = "AdminPassword";
+    public static final String createAdminTable = "CREATE TABLE " + ADMIN_TABLE + "(" +
+            ADMIN_ID_COL + " TEXT PRIMARY KEY, " +
+            ADMIN_NAME_COL + " TEXT, " +
+            ADMIN_PASSWORD_COL + " TEXT);";
+    public static final String dropAdminTable = "DROP TABLE if exists " + ADMIN_TABLE;
+
     // ------------------------------------------------------------------------------------
 
     private final static String DATABASE_NAME = "HealthBuddy.db";
-    private final static int DATABASE_VERSION = 1;
+    private final static int DATABASE_VERSION = 2;
 
     private static DatabaseHelper instance;
 
@@ -200,12 +207,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(createAdminTable);
         db.execSQL(createPatientTable);
-        db.execSQL(createDoctorTable);
-        db.execSQL(createCashierTable);
+        db.execSQL(createDiseaseTable);
         //db.execSQL(createCaloriesTable);
+        db.execSQL(createDoctorTable);
         //db.execSQL(createPatient_DrTable);
-        //db.execSQL(createComplaintTable);
+        db.execSQL(createComplaintTable);
         //db.execSQL(createSolutionTable);
+        db.execSQL(createCashierTable);
         //db.execSQL(createPaymentTable);
     }
 
@@ -214,12 +222,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(oldVersion != newVersion){
             db.execSQL(dropAdminTable);
             db.execSQL(dropPatientTable);
-            db.execSQL(dropDoctorTable);
-            db.execSQL(dropCashierTable);
+            db.execSQL(dropDiseaseTable);
             //db.execSQL(dropCaloriesTable);
+            db.execSQL(dropDoctorTable);
             //db.execSQL(dropPatientDrTable);
-            //db.execSQL(dropComplaintTable);
+            db.execSQL(dropComplaintTable);
             //db.execSQL(dropSolutionTable);
+            db.execSQL(dropCashierTable);
             //db.execSQL(dropPaymentTable);
             onCreate(db);
         }
@@ -311,9 +320,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(PATIENT_ID_COL,patient.getId());
         values.put(PATIENT_NAME_COL,patient.getName());
         values.put(PATIENT_PASSWORD_COL,patient.getPassword());
-        values.put(PATIENT_POSTAL_COL,patient.getPostalCode());
-        values.put(PATIENT_ALLERGIES_COL,patient.getAllergies());
-        values.put(PATIENT_DISEASES_COL,patient.getDiseases());
+        values.put(POSTAL_CODE_COL,patient.getPostalCode());
         db.insert(PATIENT_TABLE,null,values);
         db.close();
     }
@@ -340,9 +347,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String name = cursor.getString(1);
             String password = cursor.getString(2);
             String postalCode = cursor.getString(3);
-            String allergies = cursor.getString(4);
-            String diseases = cursor.getString(5);
-            patient = new Patient(patientId,name,password,postalCode,allergies,diseases);
+            patient = new Patient(patientId,name,password,postalCode);
         }
         cursor.close();
         db.close();
@@ -355,17 +360,80 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(PATIENT_ID_COL,patient.getId());
         values.put(PATIENT_NAME_COL,patient.getName());
         values.put(PATIENT_PASSWORD_COL,patient.getPassword());
-        values.put(PATIENT_POSTAL_COL,patient.getPostalCode());
-        values.put(PATIENT_ALLERGIES_COL,patient.getAllergies());
-        values.put(PATIENT_DISEASES_COL,patient.getDiseases());
+        values.put(POSTAL_CODE_COL,patient.getPostalCode());
         db.update(PATIENT_TABLE,values,PATIENT_ID_COL + " = ?",new String[]{patient.getId()});
         db.close();
     }
 
-    public void deletePatient(Patient patient){
+    public boolean deletePatient(Patient patient){
+        String query = "DELETE FROM " + PATIENT_TABLE + " WHERE " + PATIENT_ID_COL + " = " + patient.getId() + ";";
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(PATIENT_TABLE,PATIENT_ID_COL + " = ?",new String[]{patient.getId()});
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor.moveToFirst()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    // ********************** DISEASE **************************************************
+
+    public void insertDisease(Disease disease){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        //values.put(DISEASE_ID_COL,disease.getId());
+        values.put(PATIENT_ID_COL,disease.getPatientId());
+        values.put(ALLERGY_COL,disease.getAllergy());
+        values.put(DISEASE_HISTORY_COL,disease.getDiseaseInfo());
+        db.insert(DISEASE_TABLE,null,values);
         db.close();
+    }
+
+    public Disease getDiseaseByPatientId(String patientId){
+        String query = "SELECT * FROM " + DISEASE_TABLE + " WHERE " + PATIENT_ID_COL + " = '" + patientId + "';";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+        Disease disease = null;
+        if(cursor.moveToFirst()){
+            int id = cursor.getInt(0);
+            String allergies = cursor.getString(2);
+            String diseases = cursor.getString(3);
+            disease = new Disease(id,patientId,allergies,diseases);
+        }
+        cursor.close();
+        db.close();
+        return disease;
+    }
+
+    public void updateDisease(Disease disease){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        //values.put(DISEASE_ID_COL,disease.getId());
+        values.put(PATIENT_ID_COL,disease.getPatientId());
+        values.put(ALLERGY_COL,disease.getAllergy());
+        values.put(DISEASE_HISTORY_COL,disease.getDiseaseInfo());
+        db.update(DISEASE_TABLE,values,PATIENT_ID_COL + " = ?",new String[]{disease.getPatientId()});
+        db.close();
+    }
+
+    public boolean deleteDisease(Disease disease){
+        String query = "DELETE FROM " + DISEASE_TABLE + " WHERE " + PATIENT_ID_COL + " = " + disease.getPatientId() + ";";
+        SQLiteDatabase db = this.getReadableDatabase();
+        int d = db.delete(DISEASE_TABLE,PATIENT_ID_COL + " = ?",new String[]{disease.getPatientId()});
+        if(d > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+//        Cursor cursor = db.rawQuery(query,null);
+//        if(cursor.moveToFirst()){
+//            return true;
+//        }
+//        else{
+//            return false;
+//        }
     }
 
     // ********************** DOCTOR ***************************************************
@@ -394,8 +462,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(DOCTOR_ID_COL,doctor.getId());
         values.put(DOCTOR_NAME_COL,doctor.getName());
         values.put(DOCTOR_PASSWORD_COL,doctor.getPassword());
-        values.put(DOCTOR_CLINIC_COL,doctor.getPostalCode());
-        values.put(DOCTOR_LICENSE_COL,doctor.getLicenseNumber());
+        values.put(CLINIC_PO_COL,doctor.getPostalCode());
+        values.put(LICENSE_NUMBER_COL,doctor.getLicenseNumber());
         db.insert(DOCTOR_TABLE,null,values);
         db.close();
     }
@@ -436,15 +504,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(DOCTOR_ID_COL,doctor.getId());
         values.put(DOCTOR_NAME_COL,doctor.getName());
         values.put(DOCTOR_PASSWORD_COL,doctor.getPassword());
-        values.put(DOCTOR_CLINIC_COL,doctor.getPostalCode());
-        values.put(DOCTOR_LICENSE_COL,doctor.getLicenseNumber());
+        values.put(CLINIC_PO_COL,doctor.getPostalCode());
+        values.put(LICENSE_NUMBER_COL,doctor.getLicenseNumber());
         db.update(DOCTOR_TABLE,values,DOCTOR_ID_COL + " = ?",new String[]{doctor.getId()});
-        db.close();
-    }
-
-    public void deleteDoctor(Doctor doctor){
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(DOCTOR_TABLE,DOCTOR_ID_COL + " = ?",new String[]{doctor.getId()});
         db.close();
     }
 
@@ -516,12 +578,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void deleteCashier(Cashier cashier){
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(CASHIER_TABLE,CASHIER_ID_COL + " = ?",new String[]{cashier.getId()});
-    }
-
     // ------------------------------------------------------------------
+
+    public List<String> fillPatientsWInquiry(String doctorID){
+        List<String> list= new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + PATIENT_ID_COL + " FROM " + COMPLAINT_TABLE + " WHERE " + DOCTOR_ID_COL + " = '" + doctorID + "';";
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor.moveToFirst()){
+            do{
+                list.add(cursor.getString(1));
+            }while(cursor.moveToNext());
+        }
+        return list;
+    }
 
     public List<User> getAllUsers(){
         List<User> list = new ArrayList<>();
