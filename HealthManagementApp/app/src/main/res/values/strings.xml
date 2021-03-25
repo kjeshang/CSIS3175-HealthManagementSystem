@@ -37,6 +37,14 @@
     <string name="PatientInfo_tvAllergies">Allergies</string>
     <string name="PatientInfo_tvDiseases">Diseases</string>
     <string name="PatientInfo_btnSave">Save Changes</string>
+    <!-- ************** PatientFindDoctor **************** -->
+    <string name="PatientFindDoctor_tvTitle">Find a Doctor</string>
+    <string name="PatientFindDoctor_tvAvailable">Available Doctors</string>
+    <!-- ************** PatientAppointment **************** -->
+    <string name="PatientAppointment_tvTitle">Book an Appointment</string>
+    <string name="PatientAppointment_etTime">Appointment Time</string>
+    <string name="PatientAppointment_timePicker">Time Picker</string>
+    <string name="PatientAppointment_btnBook">Book Appointment</string>
     <!-- ************** DoctorAccount **************** -->
     <string name="DoctorAccount_tvLicenseNumber">License Number</string>
     <string name="DoctorAccount_tvPostalCode">Clinic Postal Code</string>

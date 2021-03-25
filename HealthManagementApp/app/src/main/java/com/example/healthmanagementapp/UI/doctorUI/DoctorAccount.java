@@ -8,16 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.healthmanagementapp.R;
 import com.example.healthmanagementapp.UI.MainActivity;
 import com.example.healthmanagementapp.dao.DatabaseHelper;
 import com.example.healthmanagementapp.model.doctor.Doctor;
-import com.example.healthmanagementapp.model.patient.Patient;
-
-import java.util.List;
 
 public class DoctorAccount extends AppCompatActivity {
 
@@ -78,16 +74,5 @@ public class DoctorAccount extends AppCompatActivity {
         DoctorAccount_etDoctorPostal.setFocusable(false);
         DoctorAccount_etDoctorPostal.setFocusableInTouchMode(false);
         DoctorAccount_etDoctorPostal.setClickable(false);
-    }
-
-    private void fillPatientsWInquiryList(LinearLayout ll){
-        List<String> list = databaseHelper.fillPatientsWInquiry(doctorId);
-        TextView textView = null;
-        Patient patient;
-        for(int x=0; x < list.size(); x++){
-            patient = databaseHelper.getPatientById(list.get(x));
-            textView.setText(patient.getName());
-            ll.addView(textView);
-        }
     }
 }
