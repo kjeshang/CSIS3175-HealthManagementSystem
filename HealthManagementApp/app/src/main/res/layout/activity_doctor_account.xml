@@ -124,6 +124,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DoctorAccount_tvPatientInquiries" />
 
+<<<<<<< Updated upstream
     <ScrollView
         android:id="@+id/DoctorAccount_svPatientInquiries"
         android:layout_width="match_parent"
@@ -138,4 +139,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
     </ScrollView>
+=======
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/DoctorAccount_rvListPatients"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/DoctorAccount_tvPatientInquiries"
+        tools:layout_editor_absoluteX="-10dp" />
+>>>>>>> Stashed changes
 </androidx.constraintlayout.widget.ConstraintLayout>

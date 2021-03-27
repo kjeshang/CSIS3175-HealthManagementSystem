@@ -52,6 +52,8 @@
     <string name="DoctorInfo_tvPostalCode">Clinic Postal Code</string>
     <string name="DoctorInfo_tvLicenseNumber">License Number</string>
     <string name="DoctorInfo_btnSave">Save Changes</string>
+    <!-- ************** DoctorRecyclerView **************** -->
+    <string name="DoctorRecyclerView_imgPatient">Image Small</string>
     <!-- ************** CashierAccount **************** -->
     <string name="CashierAccount_tvBalance">Balance</string>
     <string name="CashierAccount_tvPatients">Patients with due payment</string>
