@@ -136,4 +136,5 @@
     <string name="AdminAddUser_etPostalCode">Postal Code</string>
     <string name="AdminAddUser_etLicense">License Number</string>
     <string name="AdminAddUser_btnAdd">Add User</string>
+    <string name="name">Name</string>
 </resources>
