@@ -117,9 +117,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Primary Key = (PatientID, DoctorID)
     // Foreign Keys = PatientID, DoctorID
     public static final String PATIENT_DR_TABLE = "PATIENT-DOCTOR";
+    public static final String PATIENT_DR_HISTORY = "PatientDoctorConversationHistory";
     public static final String createPatient_DrTable = "CREATE TABLE " + PATIENT_DR_TABLE + "(" +
             PATIENT_ID_COL + " TEXT, " +
             DOCTOR_ID_COL + " TEXT, " +
+            PATIENT_DR_HISTORY + " TEXT, " +
             "PRIMARY KEY(" + PATIENT_ID_COL + ", " + DOCTOR_ID_COL + "), " +
             "FOREIGN KEY(" + PATIENT_ID_COL + ") REFERENCES " + PATIENT_TABLE + "(" + PATIENT_ID_COL + ")" +
             "FOREIGN KEY(" + DOCTOR_ID_COL + ") REFERENCES " + DOCTOR_TABLE + "(" + DOCTOR_ID_COL + "));";
@@ -203,7 +205,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createDoctorTable);
         db.execSQL(createCashierTable);
         //db.execSQL(createCaloriesTable);
-        //db.execSQL(createPatient_DrTable);
+        db.execSQL(createPatient_DrTable);
         //db.execSQL(createComplaintTable);
         //db.execSQL(createSolutionTable);
         //db.execSQL(createPaymentTable);
@@ -217,7 +219,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.execSQL(dropDoctorTable);
             db.execSQL(dropCashierTable);
             //db.execSQL(dropCaloriesTable);
-            //db.execSQL(dropPatientDrTable);
+            db.execSQL(dropPatientDrTable);
             //db.execSQL(dropComplaintTable);
             //db.execSQL(dropSolutionTable);
             //db.execSQL(dropPaymentTable);
@@ -526,7 +528,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public List<String> fillPatientsWInquiry(String doctorID){
         List<String> list= new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT " + PATIENT_ID_COL + " FROM " + COMPLAINT_TABLE + " WHERE " + DOCTOR_ID_COL + " = '" + doctorID + "';";
+        String query = "SELECT " + PATIENT_ID_COL + " FROM " + PATIENT_DR_HISTORY + " WHERE " + DOCTOR_ID_COL + " = '" + doctorID + "';";
         Cursor cursor = db.rawQuery(query,null);
         if(cursor.moveToFirst()){
             do{

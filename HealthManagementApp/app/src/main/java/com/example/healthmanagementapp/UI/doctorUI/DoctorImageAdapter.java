@@ -12,19 +12,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.healthmanagementapp.R;
 
+import java.util.List;
+
 public class DoctorImageAdapter extends RecyclerView.Adapter {
-    private Integer[]mData;
+    private Integer[] patientPictures;
     private LayoutInflater mInflater;
     private ItemClickListener mItemClickListener;
-    String[] patients = {"eagle","elephant","gorilla","panda","panther","polar"};
+    private List<String> patientsNames;
 
-    public ImageAdapter(Context context, Integer[] data){
+    public DoctorImageAdapter(Context context, Integer[] pictures, List<String> names){
         mInflater = LayoutInflater.from(context);
-        mData = data;
+        patientPictures = pictures;
+        patientsNames = names;
     }
 
     Integer getItem(int id){
-        return mData[id];
+        return patientPictures[id];
     }
 
     void setClickListener(ItemClickListener itemClickListener){
@@ -41,24 +44,23 @@ public class DoctorImageAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((ViewHolder)holder).imageView.setImageResource(mData[position]);
-        ((ViewHolder)holder).textView.setText(patients[position]);
+        ((ViewHolder)holder).imageView.setImageResource(patientPictures[position]);
+        ((ViewHolder)holder).textView.setText(patientsNames.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mData.length;
+        return patientPictures.length;
     }
 
-    //inner class
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView imageView;
         TextView textView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.imgSmall);
-            textView = itemView.findViewById(R.id.txtImageName);
+            imageView = itemView.findViewById(R.id.DoctorRecyclerView_ivPatientImage);
+            textView = itemView.findViewById(R.id.DoctorRecyclerView_tvPatientName);
             itemView.setOnClickListener(this);
         }
 
@@ -69,7 +71,6 @@ public class DoctorImageAdapter extends RecyclerView.Adapter {
         }
     }
 
-    //interface - To make each item clickable
     public interface ItemClickListener{
         void onItemClick(View view, int position);
     }

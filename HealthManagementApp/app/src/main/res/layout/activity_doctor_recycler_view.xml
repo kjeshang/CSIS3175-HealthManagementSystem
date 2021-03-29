@@ -10,23 +10,16 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/DoctorRecyclerView_ivPatientImage"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:contentDescription="@string/DoctorRecyclerView_imgPatient"
             app:srcCompat="@drawable/ic_launcher_foreground" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/DoctorRecyclerView_tvPatientName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="wrap_content" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
     </LinearLayout>
 </LinearLayout>

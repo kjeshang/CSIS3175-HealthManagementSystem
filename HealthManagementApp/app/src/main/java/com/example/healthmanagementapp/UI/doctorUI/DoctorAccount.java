@@ -1,6 +1,9 @@
 package com.example.healthmanagementapp.UI.doctorUI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,10 +23,12 @@ import com.example.healthmanagementapp.model.patient.Patient;
 
 import java.util.List;
 
-public class DoctorAccount extends AppCompatActivity {
+public class DoctorAccount extends AppCompatActivity implements DoctorImageAdapter.ItemClickListener{
 
     String doctorId;
     Doctor doctor;
+    List<String> patients;
+    Integer[] pictures;
 
     DatabaseHelper databaseHelper;
 
@@ -32,6 +37,7 @@ public class DoctorAccount extends AppCompatActivity {
     EditText DoctorAccount_etDoctorPostal;
     Button DoctorAccount_btnLogOut;
     Button DoctorAccount_btnInfo;
+    DoctorImageAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +48,7 @@ public class DoctorAccount extends AppCompatActivity {
 
         SharedPreferences preference = getSharedPreferences("user",MODE_PRIVATE);
         doctorId = preference.getString("doctorId",null);
-
-        fillPatientsWInquiryList();
+        patients = fillPatientsWInquiryList();
 
         DoctorAccount_tvDoctorName = findViewById(R.id.DoctorAccount_tvDoctorName);
         DoctorAccount_etDoctorLicense = findViewById(R.id.DoctorAccount_etDoctorLicense);
@@ -57,6 +62,15 @@ public class DoctorAccount extends AppCompatActivity {
         DoctorAccount_etDoctorPostal.setText(doctor.getPostalCode());
 
         formatDoctorInfo();
+
+        RecyclerView recyclerView = findViewById(R.id.DoctorAccount_rvListPatients);
+        int numberOfColumns = 1;
+        recyclerView.setLayoutManager(new GridLayoutManager(this,numberOfColumns));
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        adapter = new DoctorImageAdapter(this,pictures, patients);
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
 
         DoctorAccount_btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,5 +106,10 @@ public class DoctorAccount extends AppCompatActivity {
             textView.setText(patient.getName());
             ll.addView(textView);
         }
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        startActivity(new Intent(DoctorAccount.this,));
     }
 }
