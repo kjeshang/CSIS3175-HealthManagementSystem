@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -41,6 +42,8 @@ public class DoctorAccount extends AppCompatActivity {
 
         SharedPreferences preference = getSharedPreferences("user",MODE_PRIVATE);
         doctorId = preference.getString("doctorId",null);
+
+        fillPatientsWInquiryList();
 
         DoctorAccount_tvDoctorName = findViewById(R.id.DoctorAccount_tvDoctorName);
         DoctorAccount_etDoctorLicense = findViewById(R.id.DoctorAccount_etDoctorLicense);
@@ -80,7 +83,7 @@ public class DoctorAccount extends AppCompatActivity {
         DoctorAccount_etDoctorPostal.setClickable(false);
     }
 
-    private void fillPatientsWInquiryList(LinearLayout ll){
+    private void fillPatientsWInquiryList(GridLayout ll){
         List<String> list = databaseHelper.fillPatientsWInquiry(doctorId);
         TextView textView = null;
         Patient patient;

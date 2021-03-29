@@ -124,22 +124,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DoctorAccount_tvPatientInquiries" />
 
-<<<<<<< Updated upstream
-    <ScrollView
-        android:id="@+id/DoctorAccount_svPatientInquiries"
-        android:layout_width="match_parent"
-        android:layout_height="233dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorAccount_tvPatientInquiries">
 
-        <LinearLayout
-            android:id="@+id/DoctorAccount_llPatientsWInquiry"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
-=======
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/DoctorAccount_rvListPatients"
         android:layout_width="match_parent"
