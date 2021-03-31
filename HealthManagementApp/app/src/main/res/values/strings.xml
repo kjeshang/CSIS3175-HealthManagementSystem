@@ -37,6 +37,15 @@
     <string name="PatientInfo_tvAllergies">Allergies</string>
     <string name="PatientInfo_tvDiseases">Diseases</string>
     <string name="PatientInfo_btnSave">Save Changes</string>
+    <!-- ************** PatientFindDoctor **************** -->
+    <string name="PatientFindDoctor_tvTitle">Find a Doctor</string>
+    <string name="PatientFindDoctor_tvAvailable">Available Doctors</string>
+    <!-- ************** PatientAppointment **************** -->
+    <string name="PatientAppointment_tvTitle">Book an Appointment</string>
+    <string name="PatientAppointment_etTime">Appointment Time</string>
+    <string name="PatientAppointment_timePicker">Time Picker</string>
+    <string name="PatientAppointment_btnBook">Book Appointment</string>
+    <string name="PatientAppointment_btnChat">Chat History</string>
     <!-- ************** DoctorAccount **************** -->
     <string name="DoctorAccount_tvLicenseNumber">License Number</string>
     <string name="DoctorAccount_tvPostalCode">Clinic Postal Code</string>
@@ -54,6 +63,10 @@
     <string name="DoctorInfo_btnSave">Save Changes</string>
     <!-- ************** DoctorRecyclerView **************** -->
     <string name="DoctorRecyclerView_imgPatient">Image Small</string>
+    <!-- ************** DoctorOnlineHelp **************** -->
+    <string name="OnlineHelp_tvYourMessage">Your Message</string>
+    <string name="OnlineHelp_tvChatHistory">Conversation History</string>
+    <string name="OnlineHelp_btnSendMessage">Send</string>
     <!-- ************** CashierAccount **************** -->
     <string name="CashierAccount_tvBalance">Balance</string>
     <string name="CashierAccount_tvPatients">Patients with due payment</string>
@@ -108,4 +121,5 @@
     <string name="AdminAddUser_etPostalCode">Postal Code</string>
     <string name="AdminAddUser_etLicense">License Number</string>
     <string name="AdminAddUser_btnAdd">Add User</string>
+    <string name="checkedtextview">CheckedTextView</string>
 </resources>

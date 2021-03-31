@@ -13,8 +13,7 @@
             android:id="@+id/DoctorRecyclerView_ivPatientImage"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:contentDescription="@string/DoctorRecyclerView_imgPatient"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
+            android:contentDescription="@string/DoctorRecyclerView_imgPatient" />
 
         <TextView
             android:id="@+id/DoctorRecyclerView_tvPatientName"

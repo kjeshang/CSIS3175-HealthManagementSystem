@@ -11,23 +11,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.healthmanagementapp.R;
+import com.example.healthmanagementapp.model.patient.Patient;
 
 import java.util.List;
 
-public class DoctorImageAdapter extends RecyclerView.Adapter {
-    private Integer[] patientPictures;
+public class DoctorListAdapter extends RecyclerView.Adapter {
+//    private Integer[] mPatientPictures;
     private LayoutInflater mInflater;
     private ItemClickListener mItemClickListener;
-    private List<String> patientsNames;
+    private List<Patient> mPatientsNames;
 
-    public DoctorImageAdapter(Context context, Integer[] pictures, List<String> names){
+    public DoctorListAdapter(Context context, Integer[] patientPictures, List<Patient> patientNames){
         mInflater = LayoutInflater.from(context);
-        patientPictures = pictures;
-        patientsNames = names;
+//        mPatientPictures = patientPictures;
+        mPatientsNames = patientNames;
     }
 
-    Integer getItem(int id){
-        return patientPictures[id];
+    Patient getItem(int id){
+        return mPatientsNames.get(id);
     }
 
     void setClickListener(ItemClickListener itemClickListener){
@@ -44,13 +45,16 @@ public class DoctorImageAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((ViewHolder)holder).imageView.setImageResource(patientPictures[position]);
-        ((ViewHolder)holder).textView.setText(patientsNames.get(position));
+//        ((ViewHolder)holder).imageView.setImageResource(mPatientPictures[position]);
+        if(mPatientsNames==null)
+            ((ViewHolder)holder).textView.setText("");
+        else
+            ((ViewHolder)holder).textView.setText(mPatientsNames.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return patientPictures.length;
+        return mPatientsNames.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
