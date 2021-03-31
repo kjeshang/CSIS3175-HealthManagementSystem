@@ -177,7 +177,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // ------------------------------------------------------------------------------------
 
     private final static String DATABASE_NAME = "HealthBuddy.db";
-    private final static int DATABASE_VERSION = 6;
+    private final static int DATABASE_VERSION = 7;
     private static final String TAG = "DBHelper";
 
     private static DatabaseHelper instance;

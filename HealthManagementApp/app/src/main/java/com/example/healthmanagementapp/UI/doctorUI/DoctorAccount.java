@@ -125,7 +125,7 @@ public class DoctorAccount extends AppCompatActivity implements DoctorListAdapte
     public void onItemClick(View view, int position) {
         Intent i = new Intent(DoctorAccount.this, OnlineHelp.class);
         i.putExtra("patientID", adapter.getItem(position).getId());
-        i.putExtra("doctorD", doctorId);
+        i.putExtra("doctorID", doctorId);
         startActivity(i);
     }
 }
