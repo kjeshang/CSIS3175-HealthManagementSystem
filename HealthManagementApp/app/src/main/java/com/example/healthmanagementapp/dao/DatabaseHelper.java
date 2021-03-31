@@ -329,7 +329,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-
+    public boolean checkIfCalorieExists(String date){
+        String query = "SELECT * FROM " + CALORIES_TABLE + " WHERE " + DATE_OF_CONSUMPTION_COL + " = '" + date + "';";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+        boolean status = false;
+        if(cursor.moveToFirst()){
+            status = true;
+        }
+        else{
+            status = false;
+        }
+        cursor.close();
+        db.close();
+        return status;
+    }
 
 
     // ********************** PATIENT **************************************************

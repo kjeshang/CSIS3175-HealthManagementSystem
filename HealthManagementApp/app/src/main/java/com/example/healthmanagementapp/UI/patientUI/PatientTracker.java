@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.healthmanagementapp.R;
 import com.example.healthmanagementapp.dao.DatabaseHelper;
+import com.example.healthmanagementapp.model.patient.Calories;
 
 import java.util.Calendar;
 
@@ -21,6 +22,9 @@ public class PatientTracker extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     String patientId;
 
+    Calories calories;
+
+    TextView showList;
     TextView selectDate;
     DatePickerDialog.OnDateSetListener mDateSetListener;
 
@@ -31,6 +35,7 @@ public class PatientTracker extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_tracker);
         selectDate = findViewById(R.id.selectDate_tv);
+        showList = findViewById(R.id.showList_tv);
 
         databaseHelper = DatabaseHelper.getInstance(this);
 
@@ -63,6 +68,16 @@ public class PatientTracker extends AppCompatActivity {
 
             }
         };
+
+        if (databaseHelper.checkIfCalorieExists(date)) {
+            calories = databaseHelper.getCaloriesByDate(date);
+
+            showList.setText(calories.display());
+
+        } else {
+            showList.setText("THERE IS NO PLAN CORRESPONDING TO THE ENTERED DATE");
+        }
+
 
     }
 }
