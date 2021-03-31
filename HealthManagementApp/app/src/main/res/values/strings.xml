@@ -52,7 +52,8 @@
     <string name="healthySuggestions">Health Suggestions</string>
     <string name="btnSave">Save</string>
     <string name="btnHistory">History</string>
-    <string name="textview">View</string>
+    <string name="date">Date</string>
+    <string name="selectDate">Select Date</string>
     <string-array name="SpinnerItems">
         <item>Egg</item>
         <item>Bread</item>

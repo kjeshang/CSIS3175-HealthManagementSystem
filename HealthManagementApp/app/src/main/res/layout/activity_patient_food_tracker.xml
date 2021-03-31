@@ -46,8 +46,9 @@
 
     <TextView
         android:id="@+id/healthySuggestions"
-        android:layout_width="157dp"
-        android:layout_height="53dp"
+        android:layout_width="245dp"
+        android:layout_height="40dp"
+        android:gravity="center"
         android:text="@string/healthySuggestions"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,12 +96,29 @@
         android:id="@+id/tvCalories"
         android:layout_width="145dp"
         android:layout_height="61dp"
-        android:text="TextView"
+        android:gravity="center"
+        android:text="@string/totalCalories"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.89"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.608" />
+
+    <TextView
+        android:id="@+id/dateOfConsumption"
+        android:layout_width="128dp"
+        android:layout_height="55dp"
+        android:gravity="center"
+        android:text="@string/selectDate"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.159"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
