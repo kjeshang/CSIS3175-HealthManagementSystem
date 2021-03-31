@@ -16,8 +16,10 @@ import com.example.healthmanagementapp.model.cashier.Cashier;
 import com.example.healthmanagementapp.model.doctor.Doctor;
 import com.example.healthmanagementapp.model.patient.Appointment;
 import com.example.healthmanagementapp.model.patient.Patient;
+import com.example.healthmanagementapp.model.patient.Calories;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 // Reference:
@@ -101,18 +103,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Foreign Key = PatientID
     public static final String CALORIES_TABLE = "CALORIES";
     public static final String CALORIES_ID_COL = "CaloriesID";
+    public static final String CALORIES_PATIENT_COL = "PatientID";
     public static final String FOOD_LIST_COL = "FoodList";
     public static final String TOTAL_CALORIES_COL = "TotalCalories";
     public static final String HEALTH_SUGGESTION = "HealthSuggestion";
     public static final String DATE_OF_CONSUMPTION_COL = "DateOfConsumption";
     String createCaloriesTable = "CREATE TABLE " + CALORIES_TABLE + "(" +
-            CALORIES_ID_COL + " TEXT PRIMARY KEY, " +
-            PATIENT_ID_COL + " TEXT, " +
+            CALORIES_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            CALORIES_PATIENT_COL + " TEXT, " +
             FOOD_LIST_COL + " TEXT, " +
-            TOTAL_CALORIES_COL + " INT, " +
+            TOTAL_CALORIES_COL + " INTEGER, " +
             HEALTH_SUGGESTION + " TEXT, " +
-            DATE_OF_CONSUMPTION_COL + " DATE, " +
-            "FOREIGN KEY(" + PATIENT_ID_COL + ") REFERENCES " + PATIENT_TABLE + "(" + PATIENT_ID_COL + "));";
+            DATE_OF_CONSUMPTION_COL + " TEXT, " +
+            "FOREIGN KEY(" + CALORIES_PATIENT_COL + ") REFERENCES " + PATIENT_TABLE + "(" + PATIENT_ID_COL + ")" + "ON DELETE CASCADE" + ");";
     public static final String dropCaloriesTable = "DROP TABLE if exists " + CALORIES_TABLE;
 
     // ************** PATIENT_DR **********************************
@@ -176,7 +179,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // ------------------------------------------------------------------------------------
 
     private final static String DATABASE_NAME = "HealthBuddy.db";
-    private final static int DATABASE_VERSION = 1;
+    private final static int DATABASE_VERSION = 3;
     private static final String TAG = "DBHelper";
 
     private static DatabaseHelper instance;
@@ -208,12 +211,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG,"DOCTOR table created");
         db.execSQL(createCashierTable);
         Log.d(TAG,"CASHIER table created");
-        //db.execSQL(createCaloriesTable);
+        db.execSQL(createCaloriesTable);
+        Log.d(TAG, "CALORIES table created");
         db.execSQL(createPatientDrTable);
         Log.d(TAG,"PATIENT_DOCTOR table created");
         db.execSQL(createAppointmentTable);
         Log.d(TAG,"APPOINTMENT table created");
         //db.execSQL(createPaymentTable);
+
     }
 
     @Override
@@ -223,7 +228,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.execSQL(dropPatientTable);
             db.execSQL(dropDoctorTable);
             db.execSQL(dropCashierTable);
-            //db.execSQL(dropCaloriesTable);
+            db.execSQL(dropCaloriesTable);
             db.execSQL(dropPatientDrTable);
             db.execSQL(dropAppointmentTable);
             //db.execSQL(dropPaymentTable);
@@ -290,6 +295,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return admin;
     }
+
+    //*********************** CALORIES *************************************************
+    public Calories getCaloriesByDate(String DateOfConsumption) {
+        String query = "SELECT * FROM " + CALORIES_TABLE + " WHERE " + DATE_OF_CONSUMPTION_COL + " = '" + DateOfConsumption + "';";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+        Calories calories = null;
+        if(cursor.moveToFirst()){
+            String PatientId = cursor.getString(1);
+            String FoodList = cursor.getString(2);
+            int TotalCalories = cursor.getInt(3);
+            String HealthSuggestion = cursor.getString(4);
+            DateOfConsumption = cursor.getString(5);
+            //patient = new Patient(patientId,name,password,postalCode,allergies,diseases);
+            calories = new Calories(PatientId, FoodList, TotalCalories, HealthSuggestion, DateOfConsumption);
+        }
+        cursor.close();
+        db.close();
+        return calories;
+    }
+
+    public void insertCalorie(Calories calories){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PATIENT_ID_COL,calories.getPatientId());
+        values.put(FOOD_LIST_COL,calories.getFoodList());
+        values.put(TOTAL_CALORIES_COL,calories.getTotalCalories());
+        values.put(HEALTH_SUGGESTION,calories.getHealthSuggestion());
+        values.put(DATE_OF_CONSUMPTION_COL,calories.getDateOfConsumption());
+        db.insert(CALORIES_TABLE,null,values);
+        db.close();
+    }
+
+
+
 
     // ********************** PATIENT **************************************************
 
