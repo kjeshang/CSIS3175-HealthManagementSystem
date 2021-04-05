@@ -28,6 +28,7 @@ public class PatientAccount extends AppCompatActivity {
     Button PatientAccount_btnLogout;
     Button PatientAccount_btnInfo;
     Button PatientAccount_btnFindDoctor;
+    Button PatientAccount_btnFoodTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,8 @@ public class PatientAccount extends AppCompatActivity {
         PatientAccount_btnLogout = findViewById(R.id.PatientAccount_btnLogout);
         PatientAccount_btnInfo = findViewById(R.id.PatientAccount_btnInfo);
         PatientAccount_btnFindDoctor = findViewById(R.id.PatientAccount_btnFindDoctor);
+        PatientAccount_btnFoodTracker = findViewById(R.id.PatientAccount_btnFoodTracker);
+
 
         patient = databaseHelper.getPatientById(patientId);
 
@@ -74,6 +77,14 @@ public class PatientAccount extends AppCompatActivity {
                 startActivity(new Intent(PatientAccount.this,PatientFindDoctor.class));
             }
         });
+
+        PatientAccount_btnFoodTracker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PatientAccount.this, PatientFoodTracker.class));
+            }
+        });
+
     }
 
     private void formatDiseaseInfo(){

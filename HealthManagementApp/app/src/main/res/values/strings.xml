@@ -46,6 +46,27 @@
     <string name="PatientAppointment_timePicker">Time Picker</string>
     <string name="PatientAppointment_btnBook">Book Appointment</string>
     <string name="PatientAppointment_btnChat">Chat History</string>
+    <!-- ************** Food Tracker **************** -->
+    <string name="btnAdd">Add</string>
+    <string name="quantity">Quantity</string>
+    <string name="totalCalories">Total Calories</string>
+    <string name="healthySuggestions">Health Suggestions</string>
+    <string name="btnSave">Save</string>
+    <string name="btnHistory">History</string>
+    <string name="date">Date</string>
+    <string name="selectDate">Select Date</string>
+    <string-array name="SpinnerItems">
+        <item>Egg</item>
+        <item>Bread</item>
+        <item>Tomato</item>
+        <item>Avocado</item>
+        <item>Rice</item>
+        <item>Chicken Breast</item>
+        <item>Salmon</item>
+        <item>Carrot</item>
+        <item>Apple</item>
+        <item>Orange</item>
+    </string-array>
     <!-- ************** DoctorAccount **************** -->
     <string name="DoctorAccount_tvLicenseNumber">License Number</string>
     <string name="DoctorAccount_tvPostalCode">Clinic Postal Code</string>
@@ -62,8 +83,6 @@
     <string name="DoctorInfo_tvPostalCode">Clinic Postal Code</string>
     <string name="DoctorInfo_tvLicenseNumber">License Number</string>
     <string name="DoctorInfo_btnSave">Save Changes</string>
-    <!-- ************** DoctorRecyclerView **************** -->
-    <string name="DoctorRecyclerView_imgPatient">Image Small</string>
     <!-- ************** DoctorOnlineHelp **************** -->
     <string name="OnlineHelp_tvYourMessage">Your Message</string>
     <string name="OnlineHelp_tvChatHistory">Conversation History</string>
@@ -123,4 +142,5 @@
     <string name="AdminAddUser_etLicense">License Number</string>
     <string name="AdminAddUser_btnAdd">Add User</string>
     <string name="checkedtextview">CheckedTextView</string>
+    <string name="name">Name</string>
 </resources>
