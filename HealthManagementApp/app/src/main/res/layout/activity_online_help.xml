@@ -37,10 +37,10 @@
         android:layout_marginStart="159dp"
         android:layout_marginLeft="159dp"
         android:layout_marginTop="21dp"
-        android:clickable="false"
         android:text="@string/OnlineHelp_btnSendMessage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/OnlineHelp_etYourMessage" />
+        app:layout_constraintTop_toBottomOf="@+id/OnlineHelp_etYourMessage"
+        android:enabled="false"/>
 
     <TextView
         android:id="@+id/OnlineHelp_tvChatHistory"
@@ -51,10 +51,10 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:editable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/OnlineHelp_tvChatHistoryTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/OnlineHelp_tvChatHistoryTitle"
+        android:scrollbars="vertical"/>
 
     <EditText
         android:id="@+id/OnlineHelp_etYourMessage"

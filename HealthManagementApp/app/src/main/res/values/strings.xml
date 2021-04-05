@@ -52,6 +52,7 @@
     <string name="DoctorAccount_btnLogOut">Log Out</string>
     <string name="DoctorAccount_tvPatientInquiries">Patient Inquiries</string>
     <string name="DoctorAccount_btnInfo">User Details</string>
+    <string name="DoctorAccount_btnChat">Chat</string>
     <!-- ************** DoctorInfo **************** -->
     <string name="DoctorInfo_tvDoctorDetails">Doctor Details</string>
     <string name="DoctorInfo_tvInstruction">Change information below to update details</string>

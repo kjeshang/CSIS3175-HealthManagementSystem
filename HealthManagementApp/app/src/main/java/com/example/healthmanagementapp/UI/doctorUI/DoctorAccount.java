@@ -8,25 +8,29 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.healthmanagementapp.R;
 import com.example.healthmanagementapp.UI.MainActivity;
 import com.example.healthmanagementapp.UI.OnlineHelp;
+import com.example.healthmanagementapp.UI.patientUI.PatientAppointment;
+import com.example.healthmanagementapp.UI.patientUI.PatientFindDoctor;
 import com.example.healthmanagementapp.dao.DatabaseHelper;
 import com.example.healthmanagementapp.model.doctor.Doctor;
 import com.example.healthmanagementapp.model.patient.Patient;
 
 import java.util.List;
 
-public class DoctorAccount extends AppCompatActivity implements DoctorListAdapter.ItemClickListener {
+public class DoctorAccount extends AppCompatActivity {
 
     String doctorId;
     Doctor doctor;
-    List<Patient> patientName;
-    Integer[] pictures;
+    ListView DoctorAccount_lvListPatients;
 
     DatabaseHelper databaseHelper;
 
@@ -35,9 +39,8 @@ public class DoctorAccount extends AppCompatActivity implements DoctorListAdapte
     EditText DoctorAccount_etDoctorPostal;
     Button DoctorAccount_btnLogOut;
     Button DoctorAccount_btnInfo;
-    DoctorListAdapter adapter;
+    ArrayAdapter arrayAdapter;
 
-    Button DoctorAccount_btnChat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +52,14 @@ public class DoctorAccount extends AppCompatActivity implements DoctorListAdapte
         SharedPreferences preference = getSharedPreferences("user",MODE_PRIVATE);
         doctorId = preference.getString("doctorId",null);
 
-        patientName = databaseHelper.fillPatientsWInquiry(doctorId);
-
         DoctorAccount_tvDoctorName = findViewById(R.id.DoctorAccount_tvDoctorName);
         DoctorAccount_etDoctorLicense = findViewById(R.id.DoctorAccount_etDoctorLicense);
         DoctorAccount_etDoctorPostal = findViewById(R.id.DoctorAccount_etDoctorPostal);
         DoctorAccount_btnLogOut = findViewById(R.id.DoctorAccount_btnLogOut);
         DoctorAccount_btnInfo = findViewById(R.id.DoctorAccount_btnInfo);
 
-        DoctorAccount_btnChat = findViewById(R.id.DoctorAccount_btnChat);
+        DoctorAccount_lvListPatients = findViewById(R.id.DoctorAccount_lvListPatients);
+        showPatientsWithInquiry(databaseHelper);
 
         doctor = databaseHelper.getDoctorById(doctorId);
         DoctorAccount_tvDoctorName.setText(doctor.getName());
@@ -65,15 +67,6 @@ public class DoctorAccount extends AppCompatActivity implements DoctorListAdapte
         DoctorAccount_etDoctorPostal.setText(doctor.getPostalCode());
 
         formatDoctorInfo();
-
-        RecyclerView recyclerView = findViewById(R.id.DoctorAccount_rvListPatients);
-        int numberOfColumns = 1;
-        recyclerView.setLayoutManager(new GridLayoutManager(this,numberOfColumns));
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        adapter = new DoctorListAdapter(this,pictures, patientName);
-        adapter.setClickListener(this);
-        recyclerView.setAdapter(adapter);
 
         DoctorAccount_btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,13 +82,14 @@ public class DoctorAccount extends AppCompatActivity implements DoctorListAdapte
             }
         });
 
-        DoctorAccount_btnChat.setOnClickListener(new View.OnClickListener() {
+        DoctorAccount_lvListPatients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent x = new Intent(DoctorAccount.this, OnlineHelp.class);
-                x.putExtra("patientID", "p01");
-                x.putExtra("doctorID", doctorId);
-                startActivity(x);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SharedPreferences.Editor editor = preference.edit();
+                Patient clickedPatient = (Patient) parent.getItemAtPosition(position);
+                editor.putString("selectedPatientId",clickedPatient.getId());
+                editor.commit();
+                startActivity(new Intent(DoctorAccount.this, OnlineHelp.class));
             }
         });
     }
@@ -110,22 +104,8 @@ public class DoctorAccount extends AppCompatActivity implements DoctorListAdapte
         DoctorAccount_etDoctorPostal.setClickable(false);
     }
 
-//    private void fillPatientsWInquiryList(GridLayout ll){
-//        List<String> list = databaseHelper.fillPatientsWInquiry(doctorId);
-//        TextView textView = null;
-//        Patient patient;
-//        for(int x=0; x < list.size(); x++){
-//            patient = databaseHelper.getPatientById(list.get(x));
-//            textView.setText(patient.getName());
-//            ll.addView(textView);
-//        }
-//    }
-
-    @Override
-    public void onItemClick(View view, int position) {
-        Intent i = new Intent(DoctorAccount.this, OnlineHelp.class);
-        i.putExtra("patientID", adapter.getItem(position).getId());
-        i.putExtra("doctorID", doctorId);
-        startActivity(i);
+    private void showPatientsWithInquiry(DatabaseHelper databaseHelper){
+        arrayAdapter = new ArrayAdapter(DoctorAccount.this, android.R.layout.simple_list_item_1, databaseHelper.fillPatientsWInquiry(doctorId));
+        DoctorAccount_lvListPatients.setAdapter(arrayAdapter);
     }
 }

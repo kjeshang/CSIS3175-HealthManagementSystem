@@ -131,9 +131,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 PAT_DR_PATIENT_COL + " TEXT, " +
                 PAT_DR_DOCTOR_COL + " TEXT, " +
                 PAT_DR_CHAT_COL + " TEXT, " +
-//                "PRIMARY KEY(" + PAT_DR_PATIENT_COL + ", " + PAT_DR_DOCTOR_COL + "), " +
-                "FOREIGN KEY(" + PAT_DR_PATIENT_COL + ") REFERENCES " + PATIENT_TABLE + "(" + PATIENT_ID_COL + "), " +
-                "FOREIGN KEY(" + PAT_DR_DOCTOR_COL + ") REFERENCES " + DOCTOR_TABLE + "(" + DOCTOR_ID_COL + ")" +
+                "FOREIGN KEY(" + PAT_DR_PATIENT_COL + ") " +
+                    "REFERENCES " + PATIENT_TABLE + "(" + PATIENT_ID_COL + ") " +
+                    "ON DELETE CASCADE, " +
+                "FOREIGN KEY(" + PAT_DR_DOCTOR_COL + ") " +
+                "REFERENCES " + DOCTOR_TABLE + "(" + DOCTOR_ID_COL + ") " +
+                "ON DELETE CASCADE" +
             ");";
     private static final String dropPatientDrTable = "DROP TABLE if exists " + PAT_DR_TABLE;
 
@@ -177,7 +180,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // ------------------------------------------------------------------------------------
 
     private final static String DATABASE_NAME = "HealthBuddy.db";
-    private final static int DATABASE_VERSION = 7;
+    private final static int DATABASE_VERSION = 12;
     private static final String TAG = "DBHelper";
 
     private static DatabaseHelper instance;
@@ -558,7 +561,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 PAT_DR_PATIENT_COL + " = '" + patientID + "';";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query,null);
-        boolean status = false;
+        boolean status;
         if(cursor.moveToFirst()){
             status = true;
         }
@@ -599,9 +602,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "' AND " + PAT_DR_PATIENT_COL + " = '" + patientID +"';";
         Cursor cursor = db.rawQuery(query,null);
         if(cursor.moveToFirst()){
-            patID = cursor.getString(2);
-            docID = cursor.getString(3);
-            chatHistory = cursor.getString(4);
+            patID = cursor.getString(1);
+            docID = cursor.getString(2);
+            chatHistory = cursor.getString(3);
         }
         chat = new Chat(patID, docID, chatHistory);
         cursor.close();
@@ -613,16 +616,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public List<Patient> fillPatientsWInquiry(String doctorID){
         List<Patient> list = new ArrayList<>();
-        String patId;
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT " + PAT_DR_PATIENT_COL + " FROM " + PAT_DR_TABLE + " WHERE " +
                 PAT_DR_DOCTOR_COL + " = '" + doctorID + "';";
         Cursor cursor = db.rawQuery(query,null);
         if(cursor.moveToFirst()){
             do{
-                cursor.getString(0);
-                patId = String.valueOf(cursor);
-                list.add(getPatientById(patId));
+                String patientId = cursor.getString(0);
+                String patientName = getPatientById(patientId).getName();
+                String patientPassword = getPatientById(patientId).getPassword();
+                Patient temp = new Patient(patientId,patientName,patientPassword);
+                list.add(temp);
             }while(cursor.moveToNext());
         }
         cursor.close();
