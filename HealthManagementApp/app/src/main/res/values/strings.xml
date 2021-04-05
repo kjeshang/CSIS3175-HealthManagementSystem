@@ -54,6 +54,8 @@
     <string name="btnHistory">History</string>
     <string name="date">Date</string>
     <string name="selectDate">Select Date</string>
+    <string name="btn_showList">Show</string>
+    <string name="btn_onlineHelp">Online Help</string>
     <string-array name="SpinnerItems">
         <item>Egg</item>
         <item>Bread</item>
@@ -138,4 +140,5 @@
     <string name="AdminAddUser_etLicense">License Number</string>
     <string name="AdminAddUser_btnAdd">Add User</string>
     <string name="name">Name</string>
+
 </resources>
