@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthManagementApp">
         <activity android:name=".UI.patientUI.PatientAppointment"></activity>
-        <activity android:name=".UI.OnlineHelp"/>
+        <activity android:name=".UI.doctorUI.DoctorOnlineHelp"/>
         <activity android:name=".UI.patientUI.PatientFindDoctor" />
         <activity android:name=".UI.adminUI.AdminAddUser" />
         <activity android:name=".UI.adminUI.AdminCashier" />

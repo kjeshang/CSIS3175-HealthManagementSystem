@@ -1,8 +1,6 @@
 package com.example.healthmanagementapp.UI.doctorUI;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,14 +15,9 @@ import android.widget.TextView;
 
 import com.example.healthmanagementapp.R;
 import com.example.healthmanagementapp.UI.MainActivity;
-import com.example.healthmanagementapp.UI.OnlineHelp;
-import com.example.healthmanagementapp.UI.patientUI.PatientAppointment;
-import com.example.healthmanagementapp.UI.patientUI.PatientFindDoctor;
 import com.example.healthmanagementapp.dao.DatabaseHelper;
 import com.example.healthmanagementapp.model.doctor.Doctor;
 import com.example.healthmanagementapp.model.patient.Patient;
-
-import java.util.List;
 
 public class DoctorAccount extends AppCompatActivity {
 
@@ -89,7 +82,7 @@ public class DoctorAccount extends AppCompatActivity {
                 Patient clickedPatient = (Patient) parent.getItemAtPosition(position);
                 editor.putString("selectedPatientId",clickedPatient.getId());
                 editor.commit();
-                startActivity(new Intent(DoctorAccount.this, OnlineHelp.class));
+                startActivity(new Intent(DoctorAccount.this, DoctorOnlineHelp.class));
             }
         });
     }

@@ -1,4 +1,4 @@
-package com.example.healthmanagementapp.UI;
+package com.example.healthmanagementapp.UI.doctorUI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,11 +21,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class OnlineHelp extends AppCompatActivity {
+public class DoctorOnlineHelp extends AppCompatActivity {
 
     String chatHistory;
     StringBuilder message = new StringBuilder("");
-    String doctorID, patientID, doctorName, patientName, userName;
+    String doctorID, patientID, userName;
     StringBuilder sbChatHistory = new StringBuilder("");
     EditText OnlineHelp_etYourMessage;
     TextView OnlineHelp_tvChatHistory;
@@ -41,13 +41,13 @@ public class OnlineHelp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_online_help);
+        setContentView(R.layout.activity_doctor_online_help);
 
         databaseHelper = DatabaseHelper.getInstance(this);
 
-        OnlineHelp_etYourMessage = findViewById(R.id.OnlineHelp_etYourMessage);
-        OnlineHelp_btnSendMessage = findViewById(R.id.OnlineHelp_btnSendMessage);
-        OnlineHelp_tvChatHistory = findViewById(R.id.OnlineHelp_tvChatHistory);
+        OnlineHelp_etYourMessage = findViewById(R.id.DoctorOnlineHelp_etYourMessage);
+        OnlineHelp_btnSendMessage = findViewById(R.id.DoctorOnlineHelp_btnSendMessage);
+        OnlineHelp_tvChatHistory = findViewById(R.id.DoctorOnlineHelp_tvChatHistory);
         OnlineHelp_tvChatHistory.setMovementMethod(new ScrollingMovementMethod());
 
         SharedPreferences preference = getSharedPreferences("user",MODE_PRIVATE);
@@ -101,7 +101,7 @@ public class OnlineHelp extends AppCompatActivity {
                 OnlineHelp_tvChatHistory.setText("");
                 OnlineHelp_tvChatHistory.setText(sbChatHistory.toString());
                 OnlineHelp_etYourMessage.setText("");
-                Toast.makeText(OnlineHelp.this, "Message sent to the patient", Toast.LENGTH_LONG).show();
+                Toast.makeText(DoctorOnlineHelp.this, "Message sent to the patient", Toast.LENGTH_LONG).show();
                 finChat = createUpdatedChat(conversation, sbChatHistory);
                 databaseHelper.updateChat(finChat);
             }

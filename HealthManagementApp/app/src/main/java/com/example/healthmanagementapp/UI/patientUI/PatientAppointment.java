@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.example.healthmanagementapp.R;
 import com.example.healthmanagementapp.UI.MainActivity;
-import com.example.healthmanagementapp.UI.OnlineHelp;
+import com.example.healthmanagementapp.UI.doctorUI.DoctorOnlineHelp;
 import com.example.healthmanagementapp.dao.DatabaseHelper;
 import com.example.healthmanagementapp.model.doctor.Doctor;
 import com.example.healthmanagementapp.model.patient.Appointment;
@@ -92,7 +92,7 @@ public class PatientAppointment extends AppCompatActivity {
         PatientAppointment_btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(PatientAppointment.this, OnlineHelp.class);
+                Intent i = new Intent(PatientAppointment.this, DoctorOnlineHelp.class);
                 i.putExtra("doctorID", doctorId);
                 startActivity(i);
             }
