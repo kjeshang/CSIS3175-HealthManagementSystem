@@ -28,8 +28,6 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // ************** ADMIN ***********************************
-    // CASHIER (AdminID, AdminName, AdminPassword)
-    // Primary Key = AdminID
     private static final String ADMIN_TABLE = "ADMIN";
     private static final String ADMIN_ID_COL = "AdminID";
     private static final String ADMIN_NAME_COL = "AdminName";
@@ -43,8 +41,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String dropAdminTable = "DROP TABLE if exists " + ADMIN_TABLE + ";";
 
     // ************** PATIENT *************************************
-    // PATIENT (PatientID, PatientName, PatientPassword, PatientPostalCode)
-    // Primary Key = PatientID
     private static final String PATIENT_TABLE = "PATIENT";
     private static final String PATIENT_ID_COL = "PatientID";
     private static final String PATIENT_NAME_COL = "PatientName";
@@ -64,8 +60,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String dropPatientTable = "DROP TABLE if exists " + PATIENT_TABLE + ";";
 
     // ************** DOCTOR ***********************************
-    // Doctor (DoctorID, DoctorName, DoctorPassword, LicenseNumber, ClinicPostalCode)
-    // Primary Key = DoctorID
     private static final String DOCTOR_TABLE = "DOCTOR";
     private static final String DOCTOR_ID_COL = "DoctorID";
     private static final String DOCTOR_NAME_COL = "DoctorName";
@@ -98,9 +92,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String dropCashierTable = "DROP TABLE if exists " + CASHIER_TABLE;
 
     // ************** CALORIES ***********************************
-    // Calories (CaloriesID, PatientID, FoodList, TotalCalories, HealthSuggestion, DateOfConsumption)
-    // Primary Key = CaloriesID
-    // Foreign Key = PatientID
     public static final String CALORIES_TABLE = "CALORIES";
     public static final String CALORIES_ID_COL = "CaloriesID";
     public static final String CALORIES_PATIENT_COL = "PatientID";
@@ -119,9 +110,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String dropCaloriesTable = "DROP TABLE if exists " + CALORIES_TABLE;
 
     // ************** PATIENT_DR **********************************
-    // PATIENT-DOCTOR (PatientID, DoctorID)
-    // Primary Key = (PatientID, DoctorID)
-    // Foreign Keys = PatientID, DoctorID
     private static final String PAT_DR_TABLE = "PATIENT_DOCTOR";
     //private static final String PAT_DR_ID_COL = "PatientDoctorID";
     private static final String PAT_DR_PATIENT_COL = "PatientID";
@@ -162,9 +150,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String dropAppointmentTable = "DROP TABLE if exists " + APPOINTMENT_TABLE;
 
     // ************** PAYMENT ***********************************
-    // PAYMENT (CashierID, PatientID, duePayment)
-    // Primary Key = (CashierID, PatientID)
-    // Foreign Key = CashierID, PatientID
     public static final String PAYMENT_TABLE = "PAYMENT";
     public static final String DUE_PAYMENT_COL = "DuePayment";
     public static final String createPaymentTable = "CREATE TABLE " + PAYMENT_TABLE + "(" +

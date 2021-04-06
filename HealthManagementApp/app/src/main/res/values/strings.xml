@@ -68,7 +68,8 @@
         <item>Apple</item>
         <item>Orange</item>
     </string-array>
-
+    <!-- ************** PatientTracker **************** -->
+    <string name="button"></string>
 
     <!-- ************** DoctorAccount **************** -->
     <string name="DoctorAccount_tvLicenseNumber">License Number</string>
