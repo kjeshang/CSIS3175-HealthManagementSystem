@@ -66,6 +66,6 @@
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginBottom="576dp"
-        android:text="@string/button" />
+        android:text="@string/btn_show" />
 
 </RelativeLayout>

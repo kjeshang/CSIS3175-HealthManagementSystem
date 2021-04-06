@@ -9,16 +9,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.example.healthmanagementapp.R;
 import com.example.healthmanagementapp.UI.MainActivity;
 import com.example.healthmanagementapp.dao.DatabaseHelper;
 import com.example.healthmanagementapp.model.doctor.Doctor;
+import com.example.healthmanagementapp.model.patient.Patient;
 
 public class DoctorAccount extends AppCompatActivity {
 
     String doctorId;
     Doctor doctor;
+    ListView DoctorAccount_lvListPatients;
 
     DatabaseHelper databaseHelper;
 
@@ -27,6 +32,7 @@ public class DoctorAccount extends AppCompatActivity {
     EditText DoctorAccount_etDoctorPostal;
     Button DoctorAccount_btnLogOut;
     Button DoctorAccount_btnInfo;
+    ArrayAdapter arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,9 @@ public class DoctorAccount extends AppCompatActivity {
         DoctorAccount_etDoctorPostal = findViewById(R.id.DoctorAccount_etDoctorPostal);
         DoctorAccount_btnLogOut = findViewById(R.id.DoctorAccount_btnLogOut);
         DoctorAccount_btnInfo = findViewById(R.id.DoctorAccount_btnInfo);
+
+        DoctorAccount_lvListPatients = findViewById(R.id.DoctorAccount_lvListPatients);
+        showPatientsWithInquiry(databaseHelper);
 
         doctor = databaseHelper.getDoctorById(doctorId);
         DoctorAccount_tvDoctorName.setText(doctor.getName());
@@ -64,6 +73,17 @@ public class DoctorAccount extends AppCompatActivity {
                 startActivity(new Intent(DoctorAccount.this,DoctorInfo.class));
             }
         });
+
+        DoctorAccount_lvListPatients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SharedPreferences.Editor editor = preference.edit();
+                Patient clickedPatient = (Patient) parent.getItemAtPosition(position);
+                editor.putString("selectedPatientId",clickedPatient.getId());
+                editor.commit();
+                startActivity(new Intent(DoctorAccount.this, DoctorOnlineHelp.class));
+            }
+        });
     }
 
     private void formatDoctorInfo(){
@@ -74,5 +94,10 @@ public class DoctorAccount extends AppCompatActivity {
         DoctorAccount_etDoctorPostal.setFocusable(false);
         DoctorAccount_etDoctorPostal.setFocusableInTouchMode(false);
         DoctorAccount_etDoctorPostal.setClickable(false);
+    }
+
+    private void showPatientsWithInquiry(DatabaseHelper databaseHelper){
+        arrayAdapter = new ArrayAdapter(DoctorAccount.this, android.R.layout.simple_list_item_1, databaseHelper.fillPatientsWInquiry(doctorId));
+        DoctorAccount_lvListPatients.setAdapter(arrayAdapter);
     }
 }

@@ -2,7 +2,9 @@ package com.example.healthmanagementapp.model.patient;
 
 import com.example.healthmanagementapp.model.User;
 
-public class Patient extends User {
+import java.io.Serializable;
+
+public class Patient extends User implements Serializable {
 
     private String postalCode;
     private String allergies;
