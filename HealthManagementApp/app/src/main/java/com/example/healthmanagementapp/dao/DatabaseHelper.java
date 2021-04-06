@@ -193,7 +193,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // ------------------------------------------------------------------------------------
 
     private final static String DATABASE_NAME = "HealthBuddy.db";
-    private final static int DATABASE_VERSION = 20;
+    private final static int DATABASE_VERSION = 21;
     private static final String TAG = "DBHelper";
 
     private static DatabaseHelper instance;
@@ -863,8 +863,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return list;
     }
-
-    // ********************** APPOINTMENT ***************************************************
+// ********************** APPOINTMENT ***************************************************
 
     public boolean checkIfAppointmentExists(String doctorId, String dateTime){
         String query = "SELECT * FROM " + APPOINTMENT_TABLE + " WHERE " +
