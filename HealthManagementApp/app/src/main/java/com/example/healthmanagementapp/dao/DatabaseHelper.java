@@ -343,8 +343,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public boolean checkIfCalorieExists(String consumptionDate){
+        String query = "SELECT * FROM " + CALORIES_TABLE + " WHERE " + DATE_OF_CONSUMPTION_COL + " = '" + consumptionDate + "';";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+        boolean status = false;
+        if(cursor.moveToFirst()){
+            status = true;
+        }
+        else{
+            status = false;
+        }
+        cursor.close();
+        db.close();
+        return status;
+    }
 
-
+    public List<Calories> getAllCaloriesByDate(String consumptionDate){
+        List<Calories> list = new ArrayList<>();
+        String query = "SELECT * FROM " + CALORIES_TABLE + " WHERE " + DATE_OF_CONSUMPTION_COL + " = '" + consumptionDate + "';";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor.moveToFirst()){
+            do{
+                String PatientId = cursor.getString(1);
+                String FoodList = cursor.getString(2);
+                int TotalCalories = cursor.getInt(3);
+                String HealthSuggestion = cursor.getString(4);
+                consumptionDate = cursor.getString(5);
+                //patient = new Patient(patientId,name,password,postalCode,allergies,diseases);
+                Calories calorie = new Calories(PatientId, FoodList, TotalCalories, HealthSuggestion, consumptionDate);
+                list.add(calorie);
+            }
+            while(cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return list;
+    }
 
     // ********************** PATIENT **************************************************
 

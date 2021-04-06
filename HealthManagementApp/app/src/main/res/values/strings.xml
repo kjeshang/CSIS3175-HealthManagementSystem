@@ -55,6 +55,9 @@
     <string name="btnHistory">History</string>
     <string name="date">Date</string>
     <string name="selectDate">Select Date</string>
+    <string name="btn_showList">Show</string>
+    <string name="btn_onlineHelp">Online Help</string>
+    <string name="btn_show">Show</string>
     <string-array name="SpinnerItems">
         <item>Egg</item>
         <item>Bread</item>
