@@ -92,4 +92,12 @@
         android:text="@string/CashierAccount_btnInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CashierAccount_tvPatients" />
+
+    <ListView
+        android:id="@+id/CashierAccount_lvListPatients"
+        android:layout_width="match_parent"
+        android:layout_height="379dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CashierAccount_tvPatients" />
 </androidx.constraintlayout.widget.ConstraintLayout>

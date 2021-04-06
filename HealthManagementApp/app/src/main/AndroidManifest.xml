@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthManagementApp">
-        <activity android:name=".UI.patientUI.PatientTracker"></activity>
+        <activity android:name=".UI.patientUI.PatientOnlineHelp"></activity>
+        <activity android:name=".UI.patientUI.PatientTracker" />
         <activity android:name=".UI.patientUI.PatientFoodTracker" />
         <activity android:name=".UI.patientUI.PatientAppointment" />
         <activity android:name=".UI.patientUI.PatientFindDoctor" />
         <activity android:name=".UI.adminUI.AdminAddUser" />
-        <activity android:name=".UI.doctorUI.DoctorOnlineHelp"/>
+        <activity android:name=".UI.doctorUI.DoctorOnlineHelp" />
         <activity android:name=".UI.adminUI.AdminCashier" />
         <activity android:name=".UI.adminUI.AdminDoctor" />
         <activity android:name=".UI.adminUI.AdminPatient" />
@@ -35,4 +36,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

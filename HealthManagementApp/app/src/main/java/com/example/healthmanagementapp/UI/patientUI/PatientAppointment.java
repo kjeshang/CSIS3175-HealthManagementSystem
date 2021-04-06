@@ -92,9 +92,7 @@ public class PatientAppointment extends AppCompatActivity {
         PatientAppointment_btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(PatientAppointment.this, DoctorOnlineHelp.class);
-                i.putExtra("doctorID", doctorId);
-                startActivity(i);
+                startActivity(new Intent(PatientAppointment.this, PatientOnlineHelp.class));
             }
         });
 

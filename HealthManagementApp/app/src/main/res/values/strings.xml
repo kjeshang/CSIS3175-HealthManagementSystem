@@ -83,10 +83,13 @@
     <string name="DoctorInfo_tvPostalCode">Clinic Postal Code</string>
     <string name="DoctorInfo_tvLicenseNumber">License Number</string>
     <string name="DoctorInfo_btnSave">Save Changes</string>
-    <!-- ************** DoctorOnlineHelp **************** -->
+    <!-- ************** OnlineHelp **************** -->
     <string name="OnlineHelp_tvYourMessage">Your Message</string>
     <string name="OnlineHelp_tvChatHistory">Conversation History</string>
     <string name="OnlineHelp_btnSendMessage">Send</string>
+    <string name="OnlineHelp_btnPayment">Pay</string>
+    <string name="OnlineHelp_swtMSP">Do you have MSP coverage?</string>
+    <string name="OnlineHelp_tvCost">Inquiry cost</string>
     <!-- ************** CashierAccount **************** -->
     <string name="CashierAccount_tvBalance">Balance</string>
     <string name="CashierAccount_tvPatients">Patients with due payment</string>

@@ -45,13 +45,13 @@
         android:layout_marginTop="11dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:autofillHints=""
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PatientAccount_tvAllergies"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/PatientAccount_tvAllergies" />
 
     <TextView
         android:id="@+id/PatientAccount_tvDiseases"
@@ -89,13 +89,10 @@
         android:id="@+id/PatientAccount_btnFoodTracker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="28dp"
         android:text="@string/PatientAccount_btnFoodTracker"
-        app:layout_constraintEnd_toStartOf="@+id/PatientAccount_btnFindDoctor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PatientAccount_etADiseases" />
 
@@ -103,35 +100,32 @@
         android:id="@+id/PatientAccount_btnFindDoctor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
         android:text="@string/PatientAccount_btnFindDoctor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PatientAccount_etADiseases" />
+        app:layout_constraintBottom_toBottomOf="@+id/PatientAccount_btnFoodTracker"
+        app:layout_constraintStart_toEndOf="@+id/PatientAccount_btnFoodTracker"
+        app:layout_constraintTop_toTopOf="@+id/PatientAccount_btnFoodTracker"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/PatientAccount_btnLogout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
-        android:layout_marginLeft="65dp"
-        android:layout_marginTop="31dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="30dp"
         android:text="@string/PatientAccount_btnLogout"
-        app:layout_constraintEnd_toStartOf="@+id/PatientAccount_btnInfo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PatientAccount_btnFoodTracker" />
+        app:layout_constraintEnd_toEndOf="@+id/PatientAccount_btnInfo"
+        app:layout_constraintStart_toStartOf="@+id/PatientAccount_btnInfo"
+        app:layout_constraintTop_toBottomOf="@+id/PatientAccount_btnInfo" />
 
     <Button
         android:id="@+id/PatientAccount_btnInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginRight="26dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginLeft="136dp"
+        android:layout_marginTop="20dp"
         android:text="@string/PatientAccount_btnInfo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PatientAccount_btnFindDoctor" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PatientAccount_btnFoodTracker" />
 </androidx.constraintlayout.widget.ConstraintLayout>
