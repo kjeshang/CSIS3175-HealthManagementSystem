@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.healthmanagementapp.R;
 import com.example.healthmanagementapp.UI.MainActivity;
+import com.example.healthmanagementapp.UI.doctorUI.DoctorOnlineHelp;
 import com.example.healthmanagementapp.dao.DatabaseHelper;
 import com.example.healthmanagementapp.model.doctor.Doctor;
 import com.example.healthmanagementapp.model.patient.Appointment;
@@ -44,6 +45,7 @@ public class PatientAppointment extends AppCompatActivity {
     CalendarView PatientAppointment_calendarView;
     TimePicker PatientAppointment_timePicker;
     Button PatientAppointment_btnBook;
+    Button PatientAppointment_btnChat;
 
     DatabaseHelper databaseHelper;
     String TAG = "Appointment";
@@ -64,6 +66,7 @@ public class PatientAppointment extends AppCompatActivity {
         PatientAppointment_calendarView = findViewById(R.id.PatientAppointment_calendarView);
         PatientAppointment_timePicker = findViewById(R.id.PatientAppointment_timePicker);
         PatientAppointment_btnBook = findViewById(R.id.PatientAppointment_btnBook);
+        PatientAppointment_btnChat = findViewById(R.id.PatientAppointment_btnChat);
 
         doctor = databaseHelper.getDoctorById(doctorId);
         String doctorName = doctor.getName();
@@ -83,6 +86,15 @@ public class PatientAppointment extends AppCompatActivity {
                 calendar.set(year,month,dayOfMonth);
                 view.setDate(calendar.getTimeInMillis());
                 date = formatDate(view.getDate());
+            }
+        });
+
+        PatientAppointment_btnChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(PatientAppointment.this, DoctorOnlineHelp.class);
+                i.putExtra("doctorID", doctorId);
+                startActivity(i);
             }
         });
 

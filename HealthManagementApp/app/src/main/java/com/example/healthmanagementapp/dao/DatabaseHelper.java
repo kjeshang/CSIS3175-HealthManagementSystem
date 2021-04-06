@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import com.example.healthmanagementapp.model.User;
 import com.example.healthmanagementapp.model.admin.Admin;
 import com.example.healthmanagementapp.model.cashier.Cashier;
+import com.example.healthmanagementapp.model.doctor.Chat;
 import com.example.healthmanagementapp.model.doctor.Doctor;
 import com.example.healthmanagementapp.model.patient.Appointment;
 import com.example.healthmanagementapp.model.patient.Patient;
@@ -28,6 +29,8 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // ************** ADMIN ***********************************
+    // CASHIER (AdminID, AdminName, AdminPassword)
+    // Primary Key = AdminID
     private static final String ADMIN_TABLE = "ADMIN";
     private static final String ADMIN_ID_COL = "AdminID";
     private static final String ADMIN_NAME_COL = "AdminName";
@@ -41,6 +44,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String dropAdminTable = "DROP TABLE if exists " + ADMIN_TABLE + ";";
 
     // ************** PATIENT *************************************
+    // PATIENT (PatientID, PatientName, PatientPassword, PatientPostalCode)
+    // Primary Key = PatientID
     private static final String PATIENT_TABLE = "PATIENT";
     private static final String PATIENT_ID_COL = "PatientID";
     private static final String PATIENT_NAME_COL = "PatientName";
@@ -60,6 +65,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String dropPatientTable = "DROP TABLE if exists " + PATIENT_TABLE + ";";
 
     // ************** DOCTOR ***********************************
+    // Doctor (DoctorID, DoctorName, DoctorPassword, LicenseNumber, ClinicPostalCode)
+    // Primary Key = DoctorID
     private static final String DOCTOR_TABLE = "DOCTOR";
     private static final String DOCTOR_ID_COL = "DoctorID";
     private static final String DOCTOR_NAME_COL = "DoctorName";
@@ -92,6 +99,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String dropCashierTable = "DROP TABLE if exists " + CASHIER_TABLE;
 
     // ************** CALORIES ***********************************
+    // Calories (CaloriesID, PatientID, FoodList, TotalCalories, HealthSuggestion, DateOfConsumption)
+    // Primary Key = CaloriesID
+    // Foreign Key = PatientID
     public static final String CALORIES_TABLE = "CALORIES";
     public static final String CALORIES_ID_COL = "CaloriesID";
     public static final String CALORIES_PATIENT_COL = "PatientID";
@@ -110,20 +120,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String dropCaloriesTable = "DROP TABLE if exists " + CALORIES_TABLE;
 
     // ************** PATIENT_DR **********************************
+    // PATIENT-DOCTOR (PatientID, DoctorID)
+    // Primary Key = (PatientID, DoctorID)
+    // Foreign Keys = PatientID, DoctorID
     private static final String PAT_DR_TABLE = "PATIENT_DOCTOR";
-    //private static final String PAT_DR_ID_COL = "PatientDoctorID";
+    private static final String PAT_DR_ID_COL = "PatientDoctorID";
     private static final String PAT_DR_PATIENT_COL = "PatientID";
     private static final String PAT_DR_DOCTOR_COL = "DoctorID";
     private static final String PAT_DR_CHAT_COL = "ChatHistory";
     private static final String createPatientDrTable = "CREATE TABLE " + PAT_DR_TABLE +
             "(" +
-                //PAT_DR_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                PAT_DR_PATIENT_COL + " TEXT, " +
-                PAT_DR_DOCTOR_COL + " TEXT, " +
-                PAT_DR_CHAT_COL + " TEXT, " +
-                "PRIMARY KEY(" + PAT_DR_PATIENT_COL + ", " + PAT_DR_DOCTOR_COL + "), " +
-                "FOREIGN KEY(" + PAT_DR_PATIENT_COL + ") REFERENCES " + PATIENT_TABLE + "(" + PATIENT_ID_COL + "), " +
-                "FOREIGN KEY(" + PAT_DR_DOCTOR_COL + ") REFERENCES " + DOCTOR_TABLE + "(" + DOCTOR_ID_COL + ")" +
+            PAT_DR_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            PAT_DR_PATIENT_COL + " TEXT, " +
+            PAT_DR_DOCTOR_COL + " TEXT, " +
+            PAT_DR_CHAT_COL + " TEXT, " +
+            "FOREIGN KEY(" + PAT_DR_PATIENT_COL + ") " +
+            "REFERENCES " + PATIENT_TABLE + "(" + PATIENT_ID_COL + ") " +
+            "ON DELETE CASCADE, " +
+            "FOREIGN KEY(" + PAT_DR_DOCTOR_COL + ") " +
+            "REFERENCES " + DOCTOR_TABLE + "(" + DOCTOR_ID_COL + ") " +
+            "ON DELETE CASCADE" +
             ");";
     private static final String dropPatientDrTable = "DROP TABLE if exists " + PAT_DR_TABLE;
 
@@ -135,21 +151,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String APPOINTMENT_PATIENT_COL = "PatientID";
     private static final String createAppointmentTable = "CREATE TABLE " + APPOINTMENT_TABLE +
             "(" +
-                APPOINTMENT_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                APPOINTMENT_DOCTOR_COL + " TEXT, " +
-                APPOINTMENT_DATE_TIME_COL + " DATETIME, " +
-                APPOINTMENT_PATIENT_COL + " TEXT, " +
+            APPOINTMENT_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            APPOINTMENT_DOCTOR_COL + " TEXT, " +
+            APPOINTMENT_DATE_TIME_COL + " DATETIME, " +
+            APPOINTMENT_PATIENT_COL + " TEXT, " +
 //                "PRIMARY KEY (" + APPOINTMENT_DOCTOR_COL + ", " + APPOINTMENT_DATE_TIME_COL + "), " +
-                "FOREIGN KEY(" + APPOINTMENT_DOCTOR_COL + ")" +
-                    "REFERENCES " + DOCTOR_TABLE + "(" + DOCTOR_ID_COL + ") " +
-                    "ON DELETE CASCADE, " +
-                "FOREIGN KEY(" + APPOINTMENT_PATIENT_COL + ") " +
-                    "REFERENCES " + PATIENT_TABLE + "(" + PATIENT_ID_COL + ") " +
-                    "ON DELETE CASCADE" +
+            "FOREIGN KEY(" + APPOINTMENT_DOCTOR_COL + ")" +
+            "REFERENCES " + DOCTOR_TABLE + "(" + DOCTOR_ID_COL + ") " +
+            "ON DELETE CASCADE, " +
+            "FOREIGN KEY(" + APPOINTMENT_PATIENT_COL + ") " +
+            "REFERENCES " + PATIENT_TABLE + "(" + PATIENT_ID_COL + ") " +
+            "ON DELETE CASCADE" +
             ");";
     private static final String dropAppointmentTable = "DROP TABLE if exists " + APPOINTMENT_TABLE;
 
     // ************** PAYMENT ***********************************
+    // PAYMENT (CashierID, PatientID, duePayment)
+    // Primary Key = (CashierID, PatientID)
+    // Foreign Key = CashierID, PatientID
     public static final String PAYMENT_TABLE = "PAYMENT";
     public static final String DUE_PAYMENT_COL = "DuePayment";
     public static final String createPaymentTable = "CREATE TABLE " + PAYMENT_TABLE + "(" +
@@ -611,7 +630,86 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.delete(CASHIER_TABLE,CASHIER_ID_COL + " = ?",new String[]{cashier.getId()});
     }
 
+    // ********************** PATIENT_DR ***************************************************
+
+    public boolean checkIfChatExists(String doctorId, String patientID){
+        String query = "SELECT * FROM " + PAT_DR_TABLE + " WHERE " +
+                PAT_DR_DOCTOR_COL + " = '" + doctorId + "' AND " +
+                PAT_DR_PATIENT_COL + " = '" + patientID + "';";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+        boolean status;
+        if(cursor.moveToFirst()){
+            status = true;
+        }
+        else{
+            status = false;
+        }
+        cursor.close();
+        db.close();
+        return status;
+    }
+
+    public void insertChat(Chat chat){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PAT_DR_PATIENT_COL,chat.getPatientID());
+        values.put(PAT_DR_DOCTOR_COL,chat.getDoctorID());
+        values.put(PAT_DR_CHAT_COL, chat.getChat());
+        db.insert(PAT_DR_TABLE,null,values);
+        db.close();
+    }
+
+    public void updateChat(Chat chatInput){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PAT_DR_PATIENT_COL,chatInput.getPatientID());
+        values.put(PAT_DR_DOCTOR_COL,chatInput.getDoctorID());
+        values.put(PAT_DR_CHAT_COL,chatInput.getChat());
+        db.update(PAT_DR_TABLE,values,PAT_DR_PATIENT_COL + "=? AND " + PAT_DR_DOCTOR_COL + "=?",
+                new String[]{chatInput.getPatientID(), chatInput.getDoctorID()});
+        db.close();
+    }
+
+    public Chat getChatById(String patientID, String doctorID){
+        String patID = null, docID = null, chatHistory = null;
+        Chat chat;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + PAT_DR_TABLE + " WHERE " + PAT_DR_DOCTOR_COL + " = '" + doctorID +
+                "' AND " + PAT_DR_PATIENT_COL + " = '" + patientID +"';";
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor.moveToFirst()){
+            patID = cursor.getString(1);
+            docID = cursor.getString(2);
+            chatHistory = cursor.getString(3);
+        }
+        chat = new Chat(patID, docID, chatHistory);
+        cursor.close();
+        db.close();
+        return chat;
+    }
+
     // ------------------------------------------------------------------
+
+    public List<Patient> fillPatientsWInquiry(String doctorID){
+        List<Patient> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + PAT_DR_PATIENT_COL + " FROM " + PAT_DR_TABLE + " WHERE " +
+                PAT_DR_DOCTOR_COL + " = '" + doctorID + "';";
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor.moveToFirst()){
+            do{
+                String patientId = cursor.getString(0);
+                String patientName = getPatientById(patientId).getName();
+                String patientPassword = getPatientById(patientId).getPassword();
+                Patient temp = new Patient(patientId,patientName,patientPassword);
+                list.add(temp);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return list;
+    }
 
     public List<User> getAllUsers(){
         List<User> list = new ArrayList<>();

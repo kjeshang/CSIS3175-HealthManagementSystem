@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_healthbuddy"
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthManagementApp">
-        <activity android:name=".UI.patientUI.PatientOnlineHelp"></activity>
+        <activity android:name=".UI.doctorUI.DoctorOnlineHelp"></activity>
+        <activity android:name=".UI.patientUI.PatientOnlineHelp" />
         <activity android:name=".UI.patientUI.PatientTracker" />
         <activity android:name=".UI.patientUI.PatientFoodTracker" />
         <activity android:name=".UI.patientUI.PatientAppointment" />
