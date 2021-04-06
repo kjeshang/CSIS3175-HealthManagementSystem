@@ -722,36 +722,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return chat;
     }
 
-    // ********************** APPOINTMENT ***************************************************
-
-    public boolean checkIfAppointmentExists(String doctorId, String dateTime){
-        String query = "SELECT * FROM " + APPOINTMENT_TABLE + " WHERE " +
-                APPOINTMENT_DOCTOR_COL + " = '" + doctorId + "' AND " +
-                APPOINTMENT_DATE_TIME_COL + " = '" + dateTime + "';";
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(query,null);
-        boolean status = false;
-        if(cursor.moveToFirst()){
-            status = true;
-        }
-        else{
-            status = false;
-        }
-        cursor.close();
-        db.close();
-        return status;
-    }
-
-    public void insertAppointment(Appointment appointment){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(APPOINTMENT_DOCTOR_COL,appointment.getDoctorId());
-        values.put(APPOINTMENT_DATE_TIME_COL,appointment.getDateTime());
-        values.put(APPOINTMENT_PATIENT_COL,appointment.getPatientId());
-        db.insert(APPOINTMENT_TABLE,null,values);
-        db.close();
-    }
-
     // ********************** PAYMENT ***************************************************
 
     public boolean checkIfPaymentExists(String patientID){
