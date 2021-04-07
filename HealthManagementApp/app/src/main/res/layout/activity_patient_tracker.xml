@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.patientUI.PatientTracker">
+
+    <TextView
+        android:id="@+id/selectDate_tv"
+        android:layout_width="174dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/box"
+        android:gravity="center|center_vertical"
+        android:text="@string/selectDate"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/showList_btn"
+        android:layout_width="111dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/btn_show"
+        app:layout_constraintStart_toEndOf="@+id/selectDate_tv"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/showList_lv"
+        android:layout_width="match_parent"
+        android:layout_height="544dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/listbox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectDate_tv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

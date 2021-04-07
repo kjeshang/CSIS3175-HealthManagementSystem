@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.patientUI.PatientOnlineHelp">
+
+    <TextView
+        android:id="@+id/PatientOnlineHelp_tvChatHistoryTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/OnlineHelp_tvChatHistory"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/PatientOnlineHelp_tvYourMessageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/OnlineHelp_tvYourMessage"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PatientOnlineHelp_tvChatHistory" />
+
+    <Button
+        android:id="@+id/PatientOnlineHelp_btnSendMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="20dp"
+        android:enabled="false"
+        android:text="@string/OnlineHelp_btnSendMessage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PatientOnlineHelp_swtMSP" />
+
+    <Button
+        android:id="@+id/PatientOnlineHelp_btnPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginLeft="75dp"
+        android:enabled="false"
+        android:text="@string/OnlineHelp_btnPayment"
+        app:layout_constraintBottom_toBottomOf="@+id/PatientOnlineHelp_btnSendMessage"
+        app:layout_constraintStart_toEndOf="@+id/PatientOnlineHelp_btnSendMessage"
+        app:layout_constraintTop_toTopOf="@+id/PatientOnlineHelp_btnSendMessage" />
+
+    <TextView
+        android:id="@+id/PatientOnlineHelp_tvChatHistory"
+        android:layout_width="377dp"
+        android:layout_height="270dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/listbox"
+        android:scrollbars="vertical"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PatientOnlineHelp_tvChatHistoryTitle" />
+
+    <EditText
+        android:id="@+id/PatientOnlineHelp_etYourMessage"
+        android:layout_width="377dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:autofillHints=""
+        android:background="@drawable/box"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PatientOnlineHelp_tvYourMessageTitle" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/PatientOnlineHelp_swtMSP"
+        android:layout_width="194dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/OnlineHelp_swtMSP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PatientOnlineHelp_etYourMessage" />
+
+    <TextView
+        android:id="@+id/PatientOnlineHelp_tvCost"
+        android:layout_width="126dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/OnlineHelp_tvCost"
+        app:layout_constraintBottom_toBottomOf="@+id/PatientOnlineHelp_swtMSP"
+        app:layout_constraintStart_toEndOf="@+id/PatientOnlineHelp_swtMSP"
+        app:layout_constraintTop_toTopOf="@+id/PatientOnlineHelp_swtMSP"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
