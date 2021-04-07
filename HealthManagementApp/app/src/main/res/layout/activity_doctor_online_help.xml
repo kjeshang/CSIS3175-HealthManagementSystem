@@ -7,7 +7,7 @@
     tools:context=".UI.doctorUI.DoctorOnlineHelp">
 
     <TextView
-        android:id="@+id/DoctorOnlineHelp_tvChatHistoryTitle"
+        android:id="@+id/PatientOnlineHelp_tvChatHistoryTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/DoctorOnlineHelp_tvYourMessageTitle"
+        android:id="@+id/PatientOnlineHelp_tvYourMessageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -28,10 +28,10 @@
         android:text="@string/OnlineHelp_tvYourMessage"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorOnlineHelp_tvChatHistory" />
+        app:layout_constraintTop_toBottomOf="@+id/PatientOnlineHelp_tvChatHistory" />
 
     <Button
-        android:id="@+id/DoctorOnlineHelp_btnSendMessage"
+        android:id="@+id/PatientOnlineHelp_btnSendMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="159dp"
@@ -39,11 +39,11 @@
         android:layout_marginTop="21dp"
         android:text="@string/OnlineHelp_btnSendMessage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorOnlineHelp_etYourMessage"
+        app:layout_constraintTop_toBottomOf="@+id/PatientOnlineHelp_etYourMessage"
         android:enabled="false"/>
 
     <TextView
-        android:id="@+id/DoctorOnlineHelp_tvChatHistory"
+        android:id="@+id/PatientOnlineHelp_tvChatHistory"
         android:layout_width="377dp"
         android:layout_height="340dp"
         android:layout_marginStart="16dp"
@@ -53,11 +53,11 @@
         android:layout_marginRight="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorOnlineHelp_tvChatHistoryTitle"
+        app:layout_constraintTop_toBottomOf="@+id/PatientOnlineHelp_tvChatHistoryTitle"
         android:scrollbars="vertical"/>
 
     <EditText
-        android:id="@+id/DoctorOnlineHelp_etYourMessage"
+        android:id="@+id/PatientOnlineHelp_etYourMessage"
         android:layout_width="377dp"
         android:layout_height="117dp"
         android:layout_marginStart="16dp"
@@ -71,6 +71,6 @@
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorOnlineHelp_tvYourMessageTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/PatientOnlineHelp_tvYourMessageTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

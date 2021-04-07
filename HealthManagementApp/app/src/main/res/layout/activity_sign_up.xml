@@ -57,19 +57,22 @@
             android:id="@+id/SignUp_rdbPatient"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/SignUp_rdbPatient" />
+            android:text="@string/SignUp_rdbPatient"
+            android:textColor="@color/white" />
 
         <RadioButton
             android:id="@+id/SignUp_rdbDoctor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/SignUp_rdbDoctor" />
+            android:text="@string/SignUp_rdbDoctor"
+            android:textColor="@color/white" />
 
         <RadioButton
             android:id="@+id/SignUp_rdbCashier"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/SignUp_rdbCashier" />
+            android:text="@string/SignUp_rdbCashier"
+            android:textColor="@color/white" />
     </RadioGroup>
 
     <EditText

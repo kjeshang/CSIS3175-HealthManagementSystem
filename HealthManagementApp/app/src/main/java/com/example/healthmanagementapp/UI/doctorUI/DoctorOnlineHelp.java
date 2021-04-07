@@ -45,24 +45,24 @@ public class DoctorOnlineHelp extends AppCompatActivity {
 
         databaseHelper = DatabaseHelper.getInstance(this);
 
-        OnlineHelp_etYourMessage = findViewById(R.id.DoctorOnlineHelp_etYourMessage);
-        OnlineHelp_btnSendMessage = findViewById(R.id.DoctorOnlineHelp_btnSendMessage);
-        OnlineHelp_tvChatHistory = findViewById(R.id.DoctorOnlineHelp_tvChatHistory);
+        OnlineHelp_etYourMessage = findViewById(R.id.PatientOnlineHelp_etYourMessage);
+        OnlineHelp_btnSendMessage = findViewById(R.id.PatientOnlineHelp_btnSendMessage);
+        OnlineHelp_tvChatHistory = findViewById(R.id.PatientOnlineHelp_tvChatHistory);
         OnlineHelp_tvChatHistory.setMovementMethod(new ScrollingMovementMethod());
 
         SharedPreferences preference = getSharedPreferences("user",MODE_PRIVATE);
 
-        patientID = preference.getString("patientId",null);                     //Getting the patient ID from login activity
+//        patientID = preference.getString("patientId",null);                     //Getting the patient ID from login activity
         doctorID = preference.getString("doctorId",null);                       //Getting the doctor ID from login activity
 
-        if (patientID == null) {
+//        if (patientID == null) {
             patientID = preference.getString("selectedPatientId", null);         //Getting the patient ID from the list on Doctor Activity
             userName = databaseHelper.getDoctorById(doctorID).getName();
-        }
-        if (doctorID == null) {
-            doctorID = preference.getString("selectedDoctorId", null);          //Getting the doctor ID from the Appointment list
-            userName = databaseHelper.getPatientById(patientID).getName();
-        }
+ //       }
+//        if (doctorID == null) {
+//            doctorID = preference.getString("selectedDoctorId", null);          //Getting the doctor ID from the Appointment list
+//            userName = databaseHelper.getPatientById(patientID).getName();
+//        }
 
         if(!databaseHelper.checkIfChatExists(doctorID, patientID)){
             conversation = createChat();
@@ -96,7 +96,7 @@ public class DoctorOnlineHelp extends AppCompatActivity {
                 message.setLength(0);
                 message.append(
                         "\n" + userName + "\t\t\t" + messageDate +
-                                "\n" + " " + OnlineHelp_etYourMessage.getText().toString());
+                        "\n" + " " + OnlineHelp_etYourMessage.getText().toString());
                 sbChatHistory.append(message);
                 OnlineHelp_tvChatHistory.setText("");
                 OnlineHelp_tvChatHistory.setText(sbChatHistory.toString());
