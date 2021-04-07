@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="@string/OnlineHelp_tvChatHistory"
+        android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,11 +38,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:enabled="false"
         android:text="@string/OnlineHelp_btnSendMessage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PatientOnlineHelp_swtMSP" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/PatientOnlineHelp_btnPayment"
@@ -61,14 +62,15 @@
         android:layout_height="270dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/listbox"
-        android:gravity="center"
+        android:padding="10sp"
         android:scrollbars="vertical"
-        android:textColor="@color/black"
+        android:textColor="#18957C"
         android:textColorHint="@color/black"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PatientOnlineHelp_tvChatHistoryTitle" />
@@ -79,7 +81,7 @@
         android:layout_height="117dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:autofillHints=""
@@ -87,8 +89,9 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:textColor="@color/black"
+        android:textColor="#18957C"
         android:textColorHint="@color/black"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PatientOnlineHelp_tvYourMessageTitle" />
@@ -101,6 +104,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
         android:text="@string/OnlineHelp_swtMSP"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PatientOnlineHelp_etYourMessage" />
 
@@ -112,6 +117,7 @@
         android:layout_marginLeft="56dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="@string/OnlineHelp_tvCost"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/PatientOnlineHelp_swtMSP"
         app:layout_constraintStart_toEndOf="@+id/PatientOnlineHelp_swtMSP"
         app:layout_constraintTop_toTopOf="@+id/PatientOnlineHelp_swtMSP"

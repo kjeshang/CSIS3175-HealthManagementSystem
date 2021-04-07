@@ -10,157 +10,133 @@
         android:id="@+id/AdminPatient_btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="118dp"
-        android:layout_marginEnd="115dp"
-        android:layout_marginRight="115dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/AdminPatient_btnSave"
-        app:layout_constraintEnd_toStartOf="@+id/AdminPatient_btnDelete"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_etDiseases" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/AdminPatient_btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="118dp"
-        android:layout_marginEnd="39dp"
-        android:layout_marginRight="39dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
         android:text="@string/AdminPatient_btnDelete"
+        app:layout_constraintBottom_toBottomOf="@+id/AdminPatient_btnSave"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_etDiseases" />
+        app:layout_constraintTop_toTopOf="@+id/AdminPatient_btnSave" />
 
     <EditText
         android:id="@+id/AdminPatient_etDiseases"
-        android:layout_width="0dp"
-        android:layout_height="67dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="389dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints=""
+        android:background="@drawable/box"
         android:ems="10"
-        android:gravity="start|top"
+        android:gravity="center"
         android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/AdminPatient_tvDiseases"
-        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_etAllergies"
-        android:autofillHints="" />
+        android:textColor="#18957C"
+        app:layout_constraintStart_toStartOf="@+id/AdminPatient_tvDiseases"
+        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_tvDiseases" />
 
     <TextView
         android:id="@+id/AdminPatient_tvFullName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="8dp"
         android:text="@string/AdminPatient_tvFullName"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_tvPassword" />
+        app:layout_constraintStart_toStartOf="@+id/AdminPatient_etPassword"
+        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_etPassword" />
 
     <TextView
         android:id="@+id/AdminPatient_tvUserID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
-        android:layout_marginLeft="43dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:text="@string/AdminPatient_tvUserID"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_tvPatientDetails" />
 
     <EditText
         android:id="@+id/AdminPatient_etPassword"
-        android:layout_width="0dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="389dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints=""
+        android:background="@drawable/box"
         android:ems="10"
+        android:gravity="center"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/AdminPatient_tvPassword"
-        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_etUserID"
-        android:autofillHints="" />
+        android:textColor="#18957C"
+        app:layout_constraintStart_toStartOf="@+id/AdminPatient_tvPassword"
+        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_tvPassword" />
 
     <EditText
         android:id="@+id/AdminPatient_etPostalCode"
-        android:layout_width="0dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="389dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints=""
+        android:background="@drawable/box"
         android:ems="10"
+        android:gravity="center"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/AdminPatient_tvPostalCode"
-        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_etFullName"
-        android:autofillHints="" />
+        android:textColor="#18957C"
+        app:layout_constraintStart_toStartOf="@+id/AdminPatient_tvPostalCode"
+        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_tvPostalCode" />
 
     <TextView
         android:id="@+id/AdminPatient_tvAllergies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="8dp"
         android:text="@string/AdminPatient_tvAllergies"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_tvPostalCode" />
+        app:layout_constraintStart_toStartOf="@+id/AdminPatient_etPostalCode"
+        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_etPostalCode" />
 
     <TextView
         android:id="@+id/AdminPatient_tvPostalCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="8dp"
         android:text="@string/AdminPatient_tvPostalCode"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_tvFullName" />
+        app:layout_constraintStart_toStartOf="@+id/AdminPatient_etFullName"
+        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_etFullName" />
 
     <TextView
         android:id="@+id/AdminPatient_tvPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:text="@string/AdminPatient_tvPassword"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_tvUserID" />
+        app:layout_constraintStart_toStartOf="@+id/AdminPatient_etUserID"
+        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_etUserID" />
 
     <TextView
         android:id="@+id/AdminPatient_tvDiseases"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginLeft="29dp"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="8dp"
         android:text="@string/AdminPatient_tvDiseases"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_tvAllergies" />
+        app:layout_constraintStart_toStartOf="@+id/AdminPatient_etAllergies"
+        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_etAllergies" />
 
     <TextView
         android:id="@+id/AdminPatient_tvPatientDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginLeft="148dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="149dp"
-        android:layout_marginRight="149dp"
+        android:layout_marginTop="20dp"
         android:text="@string/AdminPatient_tvPatientDetails"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -169,48 +145,43 @@
 
     <EditText
         android:id="@+id/AdminPatient_etFullName"
-        android:layout_width="0dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="389dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints=""
+        android:background="@drawable/box"
         android:ems="10"
+        android:gravity="center"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/AdminPatient_tvFullName"
-        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_etPassword"
-        android:autofillHints="" />
+        android:textColor="#18957C"
+        app:layout_constraintStart_toStartOf="@+id/AdminPatient_tvFullName"
+        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_tvFullName" />
 
     <EditText
         android:id="@+id/AdminPatient_etAllergies"
-        android:layout_width="0dp"
-        android:layout_height="67dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="389dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints=""
+        android:background="@drawable/box"
         android:ems="10"
-        android:gravity="start|top"
+        android:gravity="center"
         android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/AdminPatient_tvAllergies"
-        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_etPostalCode" />
+        android:textColor="#18957C"
+        app:layout_constraintStart_toStartOf="@+id/AdminPatient_tvAllergies"
+        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_tvAllergies" />
 
     <EditText
         android:id="@+id/AdminPatient_etUserID"
-        android:layout_width="0dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="389dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints=""
+        android:background="@drawable/box"
         android:ems="10"
+        android:gravity="center"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/AdminPatient_tvUserID"
-        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_tvPatientDetails" />
+        android:textColor="#18957C"
+        app:layout_constraintStart_toStartOf="@+id/AdminPatient_tvUserID"
+        app:layout_constraintTop_toBottomOf="@+id/AdminPatient_tvUserID" />
 </androidx.constraintlayout.widget.ConstraintLayout>

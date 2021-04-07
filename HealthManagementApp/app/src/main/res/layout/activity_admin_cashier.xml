@@ -10,132 +10,110 @@
         android:id="@+id/AdminCashier_tvCashierDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginLeft="144dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="145dp"
-        android:layout_marginRight="145dp"
+        android:layout_marginTop="20dp"
         android:text="@string/AdminCashier_tvCashierDetails"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/AdminCashier_etFullName"
+        android:layout_width="391dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints=""
+        android:background="@drawable/box"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:textColor="#18957C"
+        android:textColorHint="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/AdminCashier_tvFullName"
+        app:layout_constraintTop_toBottomOf="@+id/AdminCashier_tvFullName" />
+
+    <EditText
+        android:id="@+id/AdminCashier_etUserID"
+        android:layout_width="391dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:background="@drawable/box"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:textColor="#18957C"
+        android:textColorHint="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/AdminCashier_tvUserID"
+        app:layout_constraintTop_toBottomOf="@+id/AdminCashier_tvUserID" />
+
     <TextView
         android:id="@+id/AdminCashier_tvUserID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
         android:text="@string/AdminCashier_tvUserID"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/AdminCashier_etUserID"
-        android:layout_width="298dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:autofillHints=""
-        android:background="@drawable/box"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/AdminCashier_tvUserID"
         app:layout_constraintTop_toBottomOf="@+id/AdminCashier_tvCashierDetails" />
-
-    <TextView
-        android:id="@+id/AdminCashier_tvPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="42dp"
-        android:text="@string/AdminCashier_tvPassword"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AdminCashier_tvUserID" />
 
     <EditText
         android:id="@+id/AdminCashier_etPassword"
-        android:layout_width="296dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="391dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
         android:autofillHints=""
         android:background="@drawable/box"
         android:ems="10"
+        android:gravity="center"
         android:inputType="textPassword"
-        android:textColor="@color/black"
+        android:textColor="#18957C"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/AdminCashier_tvPassword"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/AdminCashier_tvPassword"
+        app:layout_constraintTop_toBottomOf="@+id/AdminCashier_tvPassword" />
 
     <TextView
         android:id="@+id/AdminCashier_tvFullName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:text="@string/AdminCashier_tvFullName"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AdminCashier_tvPassword" />
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/AdminCashier_tvPassword"
+        app:layout_constraintTop_toBottomOf="@+id/AdminCashier_etPassword" />
 
-    <EditText
-        android:id="@+id/AdminCashier_etFullName"
-        android:layout_width="286dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="204dp"
-        android:autofillHints=""
-        android:background="@drawable/box"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.562"
-        app:layout_constraintStart_toEndOf="@+id/AdminCashier_tvFullName"
-        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/AdminCashier_tvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/AdminCashier_tvPassword"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/AdminCashier_tvUserID"
+        app:layout_constraintTop_toBottomOf="@+id/AdminCashier_etUserID" />
 
     <Button
         android:id="@+id/AdminCashier_btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginRight="70dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/AdminCashier_btnSave"
-        app:layout_constraintEnd_toStartOf="@+id/AdminCashier_btnDelete"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AdminCashier_etFullName" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/AdminCashier_btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginRight="73dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
         android:text="@string/AdminCashier_btnDelete"
+        app:layout_constraintBottom_toBottomOf="@+id/AdminCashier_btnSave"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AdminCashier_etFullName" />
+        app:layout_constraintTop_toTopOf="@+id/AdminCashier_btnSave"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

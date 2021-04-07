@@ -50,7 +50,7 @@ public class PatientFindDoctor extends AppCompatActivity {
     }
 
     private void showDoctorsOnListView(DatabaseHelper databaseHelper){
-        arrayAdapter = new ArrayAdapter(PatientFindDoctor.this, android.R.layout.simple_list_item_1, databaseHelper.getAllDoctors());
+        arrayAdapter = new ArrayAdapter(PatientFindDoctor.this, R.layout.listview_layout, databaseHelper.getAllDoctors());
         PatientFindDoctor_listView.setAdapter(arrayAdapter);
     }
 }

@@ -52,17 +52,11 @@ public class DoctorOnlineHelp extends AppCompatActivity {
 
         SharedPreferences preference = getSharedPreferences("user",MODE_PRIVATE);
 
-//        patientID = preference.getString("patientId",null);                     //Getting the patient ID from login activity
-        doctorID = preference.getString("doctorId",null);                       //Getting the doctor ID from login activity
+        doctorID = preference.getString("doctorId",null);                    //Getting the doctor ID from login activity
 
-//        if (patientID == null) {
-            patientID = preference.getString("selectedPatientId", null);         //Getting the patient ID from the list on Doctor Activity
-            userName = databaseHelper.getDoctorById(doctorID).getName();
- //       }
-//        if (doctorID == null) {
-//            doctorID = preference.getString("selectedDoctorId", null);          //Getting the doctor ID from the Appointment list
-//            userName = databaseHelper.getPatientById(patientID).getName();
-//        }
+        patientID = preference.getString("selectedPatientId", null);         //Getting the patient ID from the list on Doctor Activity
+        userName = databaseHelper.getDoctorById(doctorID).getName();
+
 
         if(!databaseHelper.checkIfChatExists(doctorID, patientID)){
             conversation = createChat();

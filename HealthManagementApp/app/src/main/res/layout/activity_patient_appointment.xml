@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="@string/PatientAppointment_tvTitle"
@@ -27,14 +27,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/PatientAppointment_tvTitle" />
 
     <CalendarView
         android:id="@+id/PatientAppointment_calendarView"
@@ -42,13 +42,13 @@
         android:layout_height="299dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PatientAppointment_tvTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/PatientAppointment_tvPatientName" />
 
     <Button
         android:id="@+id/PatientAppointment_btnBook"
@@ -56,13 +56,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/PatientAppointment_btnBook"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PatientAppointment_timePicker"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TimePicker
         android:id="@+id/PatientAppointment_timePicker"
@@ -70,7 +67,6 @@
         android:layout_height="150dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
         android:timePickerMode="spinner"
@@ -86,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:textSize="18sp"
@@ -99,11 +95,11 @@
         android:id="@+id/PatientAppointment_btnChat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:text="@string/PatientAppointment_btnChat"
-        app:layout_constraintStart_toEndOf="@+id/PatientAppointment_btnBook"
-        app:layout_constraintTop_toBottomOf="@+id/PatientAppointment_timePicker" />
+        app:layout_constraintBottom_toBottomOf="@+id/PatientAppointment_btnBook"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/PatientAppointment_btnBook" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

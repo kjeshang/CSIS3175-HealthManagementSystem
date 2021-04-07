@@ -4,6 +4,7 @@
     <string name="Main_tvTitle">Welcome to Health Buddy</string>
     <string name="Main_btnLogin">Login</string>
     <string name="Main_btnSignUp">Sign Up</string>
+    <string name="Main_imgMain">Image Main</string>
     <!-- ************** SignUpActivity *************** -->
     <string name="SignUp_etUserID">User ID</string>
     <string name="SignUp_etPassword">Password</string>

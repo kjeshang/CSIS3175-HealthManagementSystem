@@ -8,90 +8,82 @@
 
     <EditText
         android:id="@+id/SignUp_etUserID"
-        android:layout_width="390dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="376dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="11dp"
         android:autofillHints=""
         android:background="@drawable/box"
         android:ems="10"
         android:gravity="center"
-        android:hint="@string/SignUp_etUserID"
+        android:hint="@string/AdminAddUser_etUserID"
         android:inputType="textPersonName"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/SignUp_etPassword"
+        app:layout_constraintEnd_toEndOf="@+id/SignUp_etPassword"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/SignUp_etPassword"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/SignUp_etPassword"
-        android:layout_width="387dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="376dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="12dp"
         android:autofillHints=""
         android:background="@drawable/box"
         android:ems="10"
         android:gravity="center"
-        android:hint="@string/SignUp_etPassword"
+        android:hint="@string/AdminAddUser_etPassword"
         android:inputType="textPassword"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignUp_etUserID" />
+        app:layout_constraintBottom_toTopOf="@+id/SignUp_rdbGroup"
+        app:layout_constraintEnd_toEndOf="@+id/SignUp_rdbGroup"
+        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintStart_toStartOf="@+id/SignUp_rdbGroup" />
 
     <RadioGroup
         android:id="@+id/SignUp_rdbGroup"
         android:layout_width="382dp"
-        android:layout_height="154dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginRight="13dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignUp_etPassword">
+        android:layout_height="150dp"
+        android:layout_marginBottom="11dp"
+        app:layout_constraintBottom_toTopOf="@+id/SignUp_etFullName"
+        app:layout_constraintEnd_toEndOf="@+id/SignUp_etFullName"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/SignUp_etFullName">
 
         <RadioButton
             android:id="@+id/SignUp_rdbPatient"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="@string/SignUp_rdbPatient"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
         <RadioButton
             android:id="@+id/SignUp_rdbDoctor"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="@string/SignUp_rdbDoctor"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
         <RadioButton
             android:id="@+id/SignUp_rdbCashier"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="@string/SignUp_rdbCashier"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="18sp" />
     </RadioGroup>
 
     <EditText
         android:id="@+id/SignUp_etFullName"
-        android:layout_width="381dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="376dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="12dp"
         android:autofillHints=""
         android:background="@drawable/box"
         android:ems="10"
@@ -100,19 +92,15 @@
         android:inputType="textPersonName"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignUp_rdbGroup" />
+        app:layout_constraintBottom_toTopOf="@+id/SignUp_etAllergies"
+        app:layout_constraintEnd_toEndOf="@+id/SignUp_etAllergies"
+        app:layout_constraintStart_toStartOf="@+id/SignUp_etAllergies" />
 
     <EditText
         android:id="@+id/SignUp_etAllergies"
-        android:layout_width="383dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="376dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="11dp"
         android:autofillHints=""
         android:background="@drawable/box"
         android:ems="10"
@@ -121,19 +109,15 @@
         android:inputType="textMultiLine"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignUp_etFullName" />
+        app:layout_constraintBottom_toTopOf="@+id/SignUp_etDiseases"
+        app:layout_constraintEnd_toEndOf="@+id/SignUp_etDiseases"
+        app:layout_constraintStart_toStartOf="@+id/SignUp_etDiseases" />
 
     <EditText
         android:id="@+id/SignUp_etDiseases"
-        android:layout_width="379dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="376dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="12dp"
         android:autofillHints=""
         android:background="@drawable/box"
         android:ems="10"
@@ -142,19 +126,15 @@
         android:inputType="textMultiLine"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignUp_etAllergies" />
+        app:layout_constraintBottom_toTopOf="@+id/SignUp_etPostalCode"
+        app:layout_constraintEnd_toEndOf="@+id/SignUp_etPostalCode"
+        app:layout_constraintStart_toStartOf="@+id/SignUp_etPostalCode" />
 
     <EditText
         android:id="@+id/SignUp_etPostalCode"
-        android:layout_width="382dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="376dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="11dp"
         android:autofillHints=""
         android:background="@drawable/box"
         android:ems="10"
@@ -163,34 +143,25 @@
         android:inputType="textPostalAddress"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.846"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignUp_etDiseases" />
+        app:layout_constraintBottom_toTopOf="@+id/SignUp_etLicense"
+        app:layout_constraintEnd_toEndOf="@+id/SignUp_etLicense"
+        app:layout_constraintStart_toStartOf="@+id/SignUp_etLicense" />
 
     <Button
         android:id="@+id/SignUp_btnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="159dp"
-        android:layout_marginLeft="159dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="159dp"
-        android:layout_marginRight="159dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/SignUp_btnSignUp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignUp_etLicense" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/SignUp_etLicense"
-        android:layout_width="383dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="376dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="12dp"
         android:autofillHints=""
         android:background="@drawable/box"
         android:ems="10"
@@ -199,8 +170,7 @@
         android:inputType="textPersonName"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/SignUp_btnSignUp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignUp_etPostalCode" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
