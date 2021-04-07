@@ -8,14 +8,16 @@
 
     <TextView
         android:id="@+id/selectDate_tv"
-        android:layout_width="149dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="40dp"
-        android:gravity="center_vertical"
+        android:layout_width="174dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/box"
+        android:gravity="center|center_vertical"
         android:text="@string/selectDate"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,11 +25,11 @@
 
     <Button
         android:id="@+id/showList_btn"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="111dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="16dp"
         android:text="@string/btn_show"
         app:layout_constraintStart_toEndOf="@+id/selectDate_tv"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="544dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/listbox"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectDate_tv" />
 
