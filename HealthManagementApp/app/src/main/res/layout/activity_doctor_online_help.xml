@@ -51,10 +51,14 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:background="@drawable/listbox"
+        android:gravity="center"
+        android:scrollbars="vertical"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PatientOnlineHelp_tvChatHistoryTitle"
-        android:scrollbars="vertical"/>
+        app:layout_constraintTop_toBottomOf="@+id/PatientOnlineHelp_tvChatHistoryTitle" />
 
     <EditText
         android:id="@+id/PatientOnlineHelp_etYourMessage"
@@ -66,9 +70,12 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:autofillHints=""
+        android:background="@drawable/box"
         android:ems="10"
-        android:gravity="start|top"
+        android:gravity="center"
         android:inputType="textMultiLine"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PatientOnlineHelp_tvYourMessageTitle" />

@@ -60,12 +60,12 @@
     <string name="btn_show">Show</string>
     <string-array name="SpinnerItems">
         <item>Egg</item>
-        <item>Bread</item>
+        <item>Bread (per piece)</item>
         <item>Tomato</item>
-        <item>Avocado</item>
-        <item>Rice</item>
+        <item>Avocado (1/2)</item>
+        <item>Rice (per tablespoon)</item>
         <item>Chicken Breast</item>
-        <item>Salmon</item>
+        <item>Salmon (per ounce)</item>
         <item>Carrot</item>
         <item>Apple</item>
         <item>Orange</item>

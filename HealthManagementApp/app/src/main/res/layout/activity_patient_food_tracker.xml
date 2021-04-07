@@ -8,14 +8,16 @@
 
     <Spinner
         android:id="@+id/foodList"
-        android:layout_width="313dp"
-        android:layout_height="41dp"
+        android:layout_width="323dp"
+        android:layout_height="51dp"
         android:entries="@array/SpinnerItems"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.059" />
+        app:layout_constraintVertical_bias="0.026" />
 
     <Button
         android:id="@+id/btnAdd"
@@ -31,30 +33,37 @@
 
     <EditText
         android:id="@+id/etQuantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="209dp"
+        android:layout_height="62dp"
         android:autofillHints=""
+        android:background="@drawable/box"
         android:ems="10"
+        android:gravity="center"
         android:hint="@string/quantity"
         android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.243"
+        app:layout_constraintHorizontal_bias="0.222"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.161" />
+        app:layout_constraintVertical_bias="0.137" />
 
     <TextView
         android:id="@+id/healthySuggestions"
         android:layout_width="245dp"
         android:layout_height="40dp"
+        android:background="@drawable/box"
         android:gravity="center"
         android:text="@string/healthySuggestions"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.699" />
+        app:layout_constraintVertical_bias="0.725" />
 
     <Button
         android:id="@+id/btnSave"
@@ -63,10 +72,10 @@
         android:text="@string/btnSave"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintHorizontal_bias="0.179"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.815" />
+        app:layout_constraintVertical_bias="0.836" />
 
     <Button
         android:id="@+id/btnHistory"
@@ -75,28 +84,36 @@
         android:text="@string/btnHistory"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintHorizontal_bias="0.754"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.813" />
+        app:layout_constraintVertical_bias="0.834" />
 
     <TextView
         android:id="@+id/tvFoodList"
-        android:layout_width="326dp"
-        android:layout_height="149dp"
+        android:layout_width="359dp"
+        android:layout_height="164dp"
+        android:background="@drawable/listbox"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textColorLink="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.576"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.347" />
+        app:layout_constraintVertical_bias="0.317" />
 
     <TextView
         android:id="@+id/tvCalories"
         android:layout_width="145dp"
         android:layout_height="61dp"
+        android:background="@drawable/box"
         android:gravity="center"
         android:text="@string/totalCalories"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.89"
@@ -106,10 +123,13 @@
 
     <TextView
         android:id="@+id/dateOfConsumption"
-        android:layout_width="128dp"
-        android:layout_height="55dp"
+        android:layout_width="138dp"
+        android:layout_height="61dp"
+        android:background="@drawable/box"
         android:gravity="center"
         android:text="@string/selectDate"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -118,18 +138,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.6" />
-
-    <Button
-        android:id="@+id/btn_onlineHelp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_onlineHelp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.929" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

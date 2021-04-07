@@ -53,16 +53,19 @@
 
     <EditText
         android:id="@+id/CashierAccount_etBalance"
-        android:layout_width="262dp"
-        android:layout_height="46dp"
+        android:layout_width="264dp"
+        android:layout_height="59dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="15dp"
         android:layout_marginRight="15dp"
         android:autofillHints=""
+        android:background="@drawable/box"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/CashierAccount_tvBalance"
         app:layout_constraintTop_toBottomOf="@+id/CashierAccount_tvCashierName" />
@@ -98,6 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="379dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/listbox"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CashierAccount_tvPatients" />
 </androidx.constraintlayout.widget.ConstraintLayout>

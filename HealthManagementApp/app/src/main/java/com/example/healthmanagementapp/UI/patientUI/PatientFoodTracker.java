@@ -48,10 +48,10 @@ public class PatientFoodTracker extends AppCompatActivity implements AdapterView
     Button btnSave;
     Button btnHistory;
     Button btnAdd;
-    Button btnOnlineHelp;
     String item;
     String date;
     int itemsCalories = 0;
+    int clicked = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,6 +100,7 @@ public class PatientFoodTracker extends AppCompatActivity implements AdapterView
                         year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
+                clicked = 1;
             }
         });
 
@@ -123,23 +124,23 @@ public class PatientFoodTracker extends AppCompatActivity implements AdapterView
                     case "Egg":
                         itemsCalories += (155*Integer.parseInt(quantity.getText().toString()));
                         break;
-                    case "Bread":
+                    case "Bread (per piece)":
                         itemsCalories += (90*Integer.parseInt(quantity.getText().toString()));
                         break;
                     case "Tomato":
                         itemsCalories += (33*Integer.parseInt(quantity.getText().toString()));
                         break;
-                    case "Avocado":
+                    case "Avocado (1/2)":
                         itemsCalories += (160*Integer.parseInt(quantity.getText().toString()));
                         break;
-                    case "Rice":
-                        itemsCalories += (130*Integer.parseInt(quantity.getText().toString()));
+                    case "Rice (per tablespoon)":
+                        itemsCalories += (13*Integer.parseInt(quantity.getText().toString()));
                         break;
                     case "Chicken Breast":
                         itemsCalories += (165*Integer.parseInt(quantity.getText().toString()));
                         break;
-                    case "Salmon":
-                        itemsCalories += (150*Integer.parseInt(quantity.getText().toString()));
+                    case "Salmon (per ounce)":
+                        itemsCalories += (59*Integer.parseInt(quantity.getText().toString()));
                         break;
                     case  "Carrot":
                         itemsCalories += (41*Integer.parseInt(quantity.getText().toString()));
@@ -166,11 +167,13 @@ public class PatientFoodTracker extends AppCompatActivity implements AdapterView
             @Override
             public void onClick(View v) {
 
-
-                calories = createCalorie();
-                databaseHelper.insertCalorie(calories);
-                Toast.makeText(PatientFoodTracker.this, calories.display() + "", Toast.LENGTH_LONG).show();
-
+                if (clicked == 1) {
+                    calories = createCalorie();
+                    databaseHelper.insertCalorie(calories);
+                    Toast.makeText(PatientFoodTracker.this, calories.display() + "", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(PatientFoodTracker.this, "Please Select a date", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -181,14 +184,6 @@ public class PatientFoodTracker extends AppCompatActivity implements AdapterView
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(PatientFoodTracker.this, PatientTracker.class));
-            }
-        });
-
-        btnOnlineHelp = findViewById(R.id.btn_onlineHelp);
-        btnOnlineHelp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(PatientFoodTracker.this, PatientOnlineHelp.class));
             }
         });
     }
