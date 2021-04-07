@@ -31,6 +31,7 @@ import java.util.Locale;
 
 public class PatientAppointment extends AppCompatActivity {
 
+    int clicked = 0;
     String patientId;
     String doctorId;
     Patient patient;
@@ -86,6 +87,7 @@ public class PatientAppointment extends AppCompatActivity {
                 calendar.set(year,month,dayOfMonth);
                 view.setDate(calendar.getTimeInMillis());
                 date = formatDate(view.getDate());
+                clicked = 1;
             }
         });
 
@@ -100,24 +102,29 @@ public class PatientAppointment extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                time = formatTime();
-                dateTime = date + " " + time;
-                boolean validTime = checkTime(PatientAppointment_timePicker.getHour());
-                if(validTime == false){
-                    Toast.makeText(PatientAppointment.this, "Doctors do not hold appointments at this time (" + dateTime + ").", Toast.LENGTH_SHORT).show();
+                if(clicked == 0){
+                    Toast.makeText(PatientAppointment.this,"Please select an appointment date",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    boolean appointmentExists = databaseHelper.checkIfAppointmentExists(doctorId,dateTime);
-                    Log.d(TAG,"Appointment checked");
-                    if(appointmentExists == true){
-                        Toast.makeText(PatientAppointment.this, "Appointment on " + dateTime + " not available.", Toast.LENGTH_SHORT).show();
+                    time = formatTime();
+                    dateTime = date + " " + time;
+                    boolean validTime = checkTime(PatientAppointment_timePicker.getHour());
+                    if(validTime == false){
+                        Toast.makeText(PatientAppointment.this, "Doctors do not hold appointments at this time (" + dateTime + ").", Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        appointment = new Appointment(doctorId,dateTime,patientId);
-                        databaseHelper.insertAppointment(appointment);
-                        Log.d(TAG,"Appointment inserted");
-                        Toast.makeText(PatientAppointment.this, appointment.display() + "\n\nAppointment confirmation & details sent to email", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(PatientAppointment.this, MainActivity.class));
+                        boolean appointmentExists = databaseHelper.checkIfAppointmentExists(doctorId,dateTime);
+                        Log.d(TAG,"Appointment checked");
+                        if(appointmentExists == true){
+                            Toast.makeText(PatientAppointment.this, "Appointment on " + dateTime + " not available.", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            appointment = new Appointment(doctorId,dateTime,patientId);
+                            databaseHelper.insertAppointment(appointment);
+                            Log.d(TAG,"Appointment inserted");
+                            Toast.makeText(PatientAppointment.this, appointment.display() + "\n\nAppointment confirmation & details sent to email", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(PatientAppointment.this, PatientAccount.class));
+                        }
                     }
                 }
             }
