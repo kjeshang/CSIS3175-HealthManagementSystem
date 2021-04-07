@@ -101,7 +101,7 @@ public class DoctorAccount extends AppCompatActivity {
     }
 
     private void showPatientsWithInquiry(DatabaseHelper databaseHelper){
-        arrayAdapter = new ArrayAdapter(DoctorAccount.this, android.R.layout.simple_list_item_1, databaseHelper.fillPatientsWInquiry(doctorId));
+        arrayAdapter = new ArrayAdapter(DoctorAccount.this, R.layout.listview_layout, databaseHelper.fillPatientsWInquiry(doctorId));
         DoctorAccount_lvListPatients.setAdapter(arrayAdapter);
     }
 }

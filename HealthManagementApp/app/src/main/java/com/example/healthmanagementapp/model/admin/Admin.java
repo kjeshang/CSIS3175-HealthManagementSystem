@@ -1,7 +1,5 @@
 package com.example.healthmanagementapp.model.admin;
 
-import com.example.healthmanagementapp.model.User;
-
 public class Admin {
 
     private String id;

@@ -10,11 +10,7 @@
         android:id="@+id/DoctorInfo_tvDoctorDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginLeft="92dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="92dp"
-        android:layout_marginRight="92dp"
+        android:layout_marginTop="20dp"
         android:text="@string/DoctorInfo_tvDoctorDetails"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,167 +21,146 @@
         android:id="@+id/DoctorInfo_tvUserID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="91dp"
-        android:layout_marginLeft="91dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
         android:text="@string/DoctorInfo_tvUserID"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_tvDoctorDetails" />
 
     <EditText
         android:id="@+id/DoctorInfo_etUserID"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="389dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints=""
+        android:background="@drawable/box"
         android:ems="10"
+        android:gravity="center"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/DoctorInfo_tvUserID"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_tvDoctorDetails"
-        android:autofillHints="" />
+        android:textColor="#18957C"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/DoctorInfo_tvUserID"
+        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_tvUserID" />
 
-    <TextView
-        android:id="@+id/DoctorInfo_tvPassword"
+    <Button
+        android:id="@+id/DoctorInfo_btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="78dp"
-        android:layout_marginLeft="78dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/DoctorInfo_tvPassword"
+        android:layout_marginBottom="10dp"
+        android:text="@string/DoctorInfo_btnSave"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/DoctorInfo_etPassword"
+        android:layout_width="389dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints=""
+        android:background="@drawable/box"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPassword"
+        android:textColor="#18957C"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_tvInstruction" />
+        app:layout_constraintStart_toStartOf="@+id/DoctorInfo_tvPassword"
+        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_tvPassword" />
+
+    <EditText
+        android:id="@+id/DoctorInfo_etPostalCode"
+        android:layout_width="389dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints=""
+        android:background="@drawable/box"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:textColor="#18957C"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/DoctorInfo_tvPostalCode"
+        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_tvPostalCode" />
+
+    <TextView
+        android:id="@+id/DoctorInfo_tvPostalCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/DoctorInfo_tvPostalCode"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/DoctorInfo_etFullName"
+        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_etFullName" />
+
+    <TextView
+        android:id="@+id/DoctorInfo_tvFullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/DoctorInfo_tvFullName"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/DoctorInfo_etPassword"
+        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_etPassword" />
 
     <TextView
         android:id="@+id/DoctorInfo_tvInstruction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="69dp"
-        android:layout_marginLeft="69dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="69dp"
-        android:layout_marginRight="69dp"
+        android:layout_marginTop="15dp"
         android:text="@string/DoctorInfo_tvInstruction"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_etUserID" />
 
     <TextView
-        android:id="@+id/DoctorInfo_tvFullName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="78dp"
-        android:layout_marginLeft="78dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/DoctorInfo_tvFullName"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_tvPassword" />
-
-    <EditText
-        android:id="@+id/DoctorInfo_etFullName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/DoctorInfo_tvFullName"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_etPassword" />
-
-    <TextView
-        android:id="@+id/DoctorInfo_tvPostalCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="35dp"
-        android:text="@string/DoctorInfo_tvPostalCode"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_tvFullName" />
-
-    <EditText
-        android:id="@+id/DoctorInfo_etPostalCode"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/DoctorInfo_tvPostalCode"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_etFullName"
-        android:autofillHints="" />
-
-    <TextView
         android:id="@+id/DoctorInfo_tvLicenseNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:text="@string/DoctorInfo_tvLicenseNumber"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/DoctorInfo_etPostalCode"
+        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_etPostalCode" />
+
+    <EditText
+        android:id="@+id/DoctorInfo_etFullName"
+        android:layout_width="389dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints=""
+        android:background="@drawable/box"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:textColor="#18957C"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_tvPostalCode" />
+        app:layout_constraintStart_toStartOf="@+id/DoctorInfo_tvFullName"
+        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_tvFullName" />
+
+    <TextView
+        android:id="@+id/DoctorInfo_tvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/DoctorInfo_tvPassword"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/DoctorInfo_etUserID"
+        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_tvInstruction" />
 
     <EditText
         android:id="@+id/DoctorInfo_etLicenseNumber"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="389dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
         android:autofillHints=""
+        android:background="@drawable/box"
         android:ems="10"
+        android:gravity="center"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/DoctorInfo_tvLicenseNumber"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_etPostalCode" />
-
-    <Button
-        android:id="@+id/DoctorInfo_btnSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="131dp"
-        android:layout_marginLeft="131dp"
-        android:layout_marginTop="71dp"
-        android:layout_marginEnd="132dp"
-        android:layout_marginRight="132dp"
-        android:text="@string/DoctorInfo_btnSave"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_etLicenseNumber" />
-
-    <EditText
-        android:id="@+id/DoctorInfo_etPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/DoctorInfo_tvPassword"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_tvInstruction"
-        android:autofillHints="" />
+        android:textColor="#18957C"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/DoctorInfo_tvLicenseNumber"
+        app:layout_constraintTop_toBottomOf="@+id/DoctorInfo_tvLicenseNumber" />
 </androidx.constraintlayout.widget.ConstraintLayout>

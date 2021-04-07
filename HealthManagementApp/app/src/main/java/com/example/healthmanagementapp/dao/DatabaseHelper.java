@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 
@@ -30,8 +29,6 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // ************** ADMIN ***********************************
-    // CASHIER (AdminID, AdminName, AdminPassword)
-    // Primary Key = AdminID
     private static final String ADMIN_TABLE = "ADMIN";
     private static final String ADMIN_ID_COL = "AdminID";
     private static final String ADMIN_NAME_COL = "AdminName";
@@ -45,8 +42,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String dropAdminTable = "DROP TABLE if exists " + ADMIN_TABLE + ";";
 
     // ************** PATIENT *************************************
-    // PATIENT (PatientID, PatientName, PatientPassword, PatientPostalCode)
-    // Primary Key = PatientID
     private static final String PATIENT_TABLE = "PATIENT";
     private static final String PATIENT_ID_COL = "PatientID";
     private static final String PATIENT_NAME_COL = "PatientName";
@@ -66,8 +61,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String dropPatientTable = "DROP TABLE if exists " + PATIENT_TABLE + ";";
 
     // ************** DOCTOR ***********************************
-    // Doctor (DoctorID, DoctorName, DoctorPassword, LicenseNumber, ClinicPostalCode)
-    // Primary Key = DoctorID
     private static final String DOCTOR_TABLE = "DOCTOR";
     private static final String DOCTOR_ID_COL = "DoctorID";
     private static final String DOCTOR_NAME_COL = "DoctorName";
@@ -85,8 +78,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String dropDoctorTable = "DROP TABLE if exists " + DOCTOR_TABLE;
 
     // ************** CASHIER ***********************************
-    // CASHIER (CashierID, CashierName, CashierPassword)
-    // Primary Key = CashierID
     private static final String CASHIER_TABLE = "CASHIER";
     private static final String CASHIER_ID_COL = "CashierID";
     private static final String CASHIER_NAME_COL = "CashierName";
@@ -100,9 +91,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String dropCashierTable = "DROP TABLE if exists " + CASHIER_TABLE;
 
     // ************** CALORIES ***********************************
-    // Calories (CaloriesID, PatientID, FoodList, TotalCalories, HealthSuggestion, DateOfConsumption)
-    // Primary Key = CaloriesID
-    // Foreign Key = PatientID
     public static final String CALORIES_TABLE = "CALORIES";
     public static final String CALORIES_ID_COL = "CaloriesID";
     public static final String CALORIES_PATIENT_COL = "PatientID";
@@ -121,9 +109,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String dropCaloriesTable = "DROP TABLE if exists " + CALORIES_TABLE;
 
     // ************** PATIENT_DR **********************************
-    // PATIENT-DOCTOR (PatientID, DoctorID)
-    // Primary Key = (PatientID, DoctorID)
-    // Foreign Keys = PatientID, DoctorID
     private static final String PAT_DR_TABLE = "PATIENT_DOCTOR";
     private static final String PAT_DR_ID_COL = "PatientDoctorID";
     private static final String PAT_DR_PATIENT_COL = "PatientID";
@@ -156,7 +141,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 APPOINTMENT_DOCTOR_COL + " TEXT, " +
                 APPOINTMENT_DATE_TIME_COL + " DATETIME, " +
                 APPOINTMENT_PATIENT_COL + " TEXT, " +
-//                "PRIMARY KEY (" + APPOINTMENT_DOCTOR_COL + ", " + APPOINTMENT_DATE_TIME_COL + "), " +
                 "FOREIGN KEY(" + APPOINTMENT_DOCTOR_COL + ")" +
                     "REFERENCES " + DOCTOR_TABLE + "(" + DOCTOR_ID_COL + ") " +
                     "ON DELETE CASCADE, " +
@@ -167,23 +151,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String dropAppointmentTable = "DROP TABLE if exists " + APPOINTMENT_TABLE;
 
     // ************** PAYMENT ***********************************
-    // PAYMENT (CashierID, PatientID, duePayment)
-    // Primary Key = (CashierID, PatientID)
-    // Foreign Key = CashierID, PatientID
     public static final String PAYMENT_TABLE = "PAYMENT";
     public static final String PAYMENT_ID_COL = "PaymentID";
-//    public static final String PAYMENT_CASHIER_COL = "CashierID";
     private static final String PAYMENT_PATIENT_COL = "PatientID";
     public static final String PAYMENT_AMOUNT_COL = "DuePayment";
     public static final String createPaymentTable = "CREATE TABLE " + PAYMENT_TABLE +
             "(" +
             PAYMENT_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-//            PAYMENT_CASHIER_COL + " TEXT, " +
             PAYMENT_PATIENT_COL + " TEXT, " +
             PAYMENT_AMOUNT_COL + " INTEGER, " +
-//            "FOREIGN KEY(" + PAYMENT_CASHIER_COL + ") " +
-//                "REFERENCES " + CASHIER_TABLE + "(" + CASHIER_ID_COL + ") " +
-//                "ON DELETE CASCADE, " +
             "FOREIGN KEY(" + PAYMENT_PATIENT_COL + ") " +
                 "REFERENCES " + PATIENT_TABLE + "(" + PAT_DR_PATIENT_COL + ") " +
                 "ON DELETE CASCADE" +
@@ -193,7 +169,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // ------------------------------------------------------------------------------------
 
     private final static String DATABASE_NAME = "HealthBuddy.db";
-    private final static int DATABASE_VERSION = 22;
+    private final static int DATABASE_VERSION = 23;
     private static final String TAG = "DBHelper";
 
     private static DatabaseHelper instance;
@@ -762,7 +738,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean checkIfPaymentExists(String patientID){
         String query = "SELECT * FROM " + PAYMENT_TABLE + " WHERE " +
-//                PAYMENT_CASHIER_COL + " = '" + cashierId + "' AND " +
                 PAYMENT_PATIENT_COL + " = '" + patientID + "';";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query,null);
@@ -782,7 +757,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(PAYMENT_PATIENT_COL,payment.getPatientID());
-//        values.put(PAYMENT_CASHIER_COL,payment.getCashierID());
         values.put(PAYMENT_AMOUNT_COL, payment.getValue());
         db.insert(PAYMENT_TABLE,null,values);
         db.close();
@@ -792,31 +766,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(PAYMENT_PATIENT_COL,paymentInput.getPatientID());
-//        values.put(PAYMENT_CASHIER_COL,paymentInput.getCashierID());
         values.put(PAYMENT_AMOUNT_COL,paymentInput.getValue());
-//        db.update(PAYMENT_TABLE,values,PAYMENT_PATIENT_COL + "=? AND " + PAYMENT_CASHIER_COL + "=?",
         db.update(PAYMENT_TABLE,values,PAYMENT_PATIENT_COL + "=? ",new String[]{paymentInput.getPatientID()});
         db.close();
     }
 
     public Payment getPaymentById(String patientID){
-//        String patID = null, cashID = null;
         String patID = null;
         int paymentHistory = 0;
         Payment payment;
         SQLiteDatabase db = this.getReadableDatabase();
-//        String query = "SELECT * FROM " + PAYMENT_TABLE + " WHERE " + PAYMENT_CASHIER_COL + " = '" + cashierID +
-//                "' AND " + PAYMENT_PATIENT_COL + " = '" + patientID +"';";
         String query = "SELECT * FROM " + PAYMENT_TABLE + " WHERE " + PAYMENT_PATIENT_COL + " = '" + patientID +"';";
         Cursor cursor = db.rawQuery(query,null);
         if(cursor.moveToFirst()){
-//            patID = cursor.getString(2);
-//            cashID = cursor.getString(1);
-//            paymentHistory = cursor.getInt(3);
             patID = cursor.getString(1);
             paymentHistory = cursor.getInt(2);
         }
-//        payment = new Payment(patID, cashID, paymentHistory);
         payment = new Payment(patID, paymentHistory);
         cursor.close();
         db.close();
@@ -898,34 +863,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert(APPOINTMENT_TABLE,null,values);
         db.close();
     }
-
-//    public String getUserId(User user){
-//        String queryPatient = "SELECT * FROM " + PATIENT_TABLE + " WHERE " +
-//                PATIENT_ID_COL + " = '" + user.getId() + "' AND " +
-//                PATIENT_PASSWORD_COL + " = '" + user.getPassword() + "';";
-//        String queryDoctor = "SELECT * FROM " + DOCTOR_TABLE + " WHERE " +
-//                DOCTOR_ID_COL + " = '" + user.getId() + "' AND " +
-//                DOCTOR_PASSWORD_COL + " = '" + user.getPassword() + "';";
-//        String queryCashier = "SELECT * FROM " + CASHIER_TABLE + " WHERE " +
-//                CASHIER_ID_COL + " = '" + user.getId() + "' AND " +
-//                CASHIER_PASSWORD_COL + " = '" + user.getPassword() + "';";
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = null;
-//        cursor = db.rawQuery(queryPatient,null);
-//        String id = null;
-//        if(cursor.moveToFirst()){
-//            id = cursor.getString(0);
-//        }
-//        cursor = db.rawQuery(queryDoctor,null);
-//        if(cursor.moveToFirst()){
-//            id = cursor.getString(0);
-//        }
-//        cursor = db.rawQuery(queryCashier,null);
-//        if(cursor.moveToFirst()){
-//            id = cursor.getString(0);
-//        }
-//        cursor.close();
-//        db.close();
-//        return id;
-//    }
 }

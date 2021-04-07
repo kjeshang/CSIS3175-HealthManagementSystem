@@ -100,7 +100,7 @@ public class AdminAccount extends AppCompatActivity {
     }
 
     private void showUsersOnListView(DatabaseHelper databaseHelper){
-        arrayAdapter = new ArrayAdapter<User>(AdminAccount.this, android.R.layout.simple_list_item_1,databaseHelper.getAllUsers());
+        arrayAdapter = new ArrayAdapter<User>(AdminAccount.this, R.layout.listview_layout,databaseHelper.getAllUsers());
         AdminAccount_listView.setAdapter(arrayAdapter);
     }
 }

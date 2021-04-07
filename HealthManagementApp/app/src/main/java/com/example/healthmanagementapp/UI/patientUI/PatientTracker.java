@@ -49,7 +49,6 @@ public class PatientTracker extends AppCompatActivity {
         SharedPreferences preference = getSharedPreferences("user", MODE_PRIVATE);
         patientId = preference.getString("patientId", null);
 
-
         selectDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +77,7 @@ public class PatientTracker extends AppCompatActivity {
             }
         };
         ArrayList<String> arrayList = new ArrayList<>();
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.listview_layout, arrayList);
         btn_showList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,12 +96,6 @@ public class PatientTracker extends AppCompatActivity {
                     Toast.makeText(PatientTracker.this, "Please enter a Date", Toast.LENGTH_LONG).show();
                 }
             }
-
-
         });
-
-
-
-
     }
 }

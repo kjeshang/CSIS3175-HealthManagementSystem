@@ -24,11 +24,4 @@ public class Chat {
     private void setChat(String chat){
         this.chat = chat;
     }
-
-    public boolean checkChat(){
-        if(getPatientID().equals("") || getDoctorID().equals("") || getChat().equals(""))
-            return false;
-        else
-            return true;
-    }
 }

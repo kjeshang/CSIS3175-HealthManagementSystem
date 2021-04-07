@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:textSize="36sp"
@@ -24,56 +24,47 @@
         android:id="@+id/AdminAccount_btnNewUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginRight="68dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/AdminAccount_btnNewUser"
-        app:layout_constraintEnd_toStartOf="@+id/AdminAccount_btnLogOut"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AdminAccount_tvAdminName" />
-
-    <TextView
-        android:id="@+id/AdminAccount_tvRegUsers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="268dp"
-        android:layout_marginRight="268dp"
-        android:text="@string/AdminAccount_tvRegUsers"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AdminAccount_btnNewUser" />
-
-    <ListView
-        android:id="@+id/AdminAccount_listView"
-        android:layout_width="396dp"
-        android:layout_height="461dp"
-        android:background="@drawable/listbox"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginRight="7dp"
-        android:layout_marginBottom="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AdminAccount_tvRegUsers" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/AdminAccount_btnLogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
         android:text="@string/AdminAccount_btnLogOut"
+        app:layout_constraintBottom_toBottomOf="@+id/AdminAccount_btnNewUser"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/AdminAccount_btnNewUser" />
+
+    <ListView
+        android:id="@+id/AdminAccount_listView"
+        android:layout_width="395dp"
+        android:layout_height="461dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/listbox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AdminAccount_tvRegUsers">
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/AdminAccount_tvRegUsers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/AdminAccount_tvRegUsers"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AdminAccount_tvAdminName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

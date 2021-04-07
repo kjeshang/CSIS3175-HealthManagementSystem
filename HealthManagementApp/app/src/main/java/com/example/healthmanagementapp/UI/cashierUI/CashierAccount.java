@@ -99,7 +99,7 @@ public class CashierAccount extends AppCompatActivity {
         CashierAccount_etBalance.setClickable(false);
     }
     private void showPatientsWithDueBalance(DatabaseHelper databaseHelper){
-        arrayAdapter = new ArrayAdapter(CashierAccount.this, android.R.layout.simple_list_item_1, databaseHelper.fillPatientsWDueBalance());
+        arrayAdapter = new ArrayAdapter(CashierAccount.this, R.layout.listview_layout, databaseHelper.fillPatientsWDueBalance());
         CashierAccount_lvListPatients.setAdapter(arrayAdapter);
     }
 }

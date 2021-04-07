@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="229dp"
         android:layout_marginRight="229dp"
         android:text="@string/DoctorAccount_tvLicenseNumber"
@@ -26,37 +26,28 @@
         android:id="@+id/DoctorAccount_tvPostalCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="208dp"
-        android:layout_marginRight="208dp"
+        android:layout_marginTop="10dp"
         android:text="@string/DoctorAccount_tvPostalCode"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/DoctorAccount_etDoctorLicense"
         app:layout_constraintTop_toBottomOf="@+id/DoctorAccount_etDoctorLicense" />
 
     <Button
         android:id="@+id/DoctorAccount_btnLogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
         android:text="@string/DoctorAccount_btnLogOut"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorAccount_lvListPatients" />
+        app:layout_constraintBottom_toBottomOf="@+id/DoctorAccount_btnInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/DoctorAccount_btnInfo" />
 
     <TextView
         android:id="@+id/DoctorAccount_tvDoctorName"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,40 +56,34 @@
 
     <EditText
         android:id="@+id/DoctorAccount_etDoctorLicense"
-        android:layout_width="342dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="395dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
         android:autofillHints=""
         android:background="@drawable/box"
         android:ems="10"
+        android:gravity="center_horizontal|center_vertical"
         android:inputType="textPersonName"
-        android:textColor="@color/black"
+        android:textColor="#18957D"
         android:textColorHint="@color/black"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.59"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/DoctorAccount_tvLicenseNumber"
         app:layout_constraintTop_toBottomOf="@+id/DoctorAccount_tvLicenseNumber" />
 
     <EditText
         android:id="@+id/DoctorAccount_etDoctorPostal"
-        android:layout_width="340dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="395dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
         android:autofillHints=""
         android:background="@drawable/box"
         android:ems="10"
+        android:gravity="center_horizontal|center_vertical"
         android:inputType="textPersonName"
-        android:textColor="@color/black"
+        android:textColor="#18957D"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/DoctorAccount_tvPostalCode"
         app:layout_constraintTop_toBottomOf="@+id/DoctorAccount_tvPostalCode" />
 
     <TextView
@@ -107,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="111dp"
         android:layout_marginLeft="111dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="111dp"
         android:layout_marginRight="111dp"
         android:text="@string/DoctorAccount_tvPatientInquiries"
@@ -116,23 +101,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DoctorAccount_etDoctorPostal" />
 
+
     <Button
         android:id="@+id/DoctorAccount_btnInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/DoctorAccount_btnInfo"
-        app:layout_constraintStart_toEndOf="@+id/DoctorAccount_btnLogOut"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorAccount_lvListPatients" />
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
         android:id="@+id/DoctorAccount_lvListPatients"
-        android:layout_width="match_parent"
-        android:layout_height="243dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="395dp"
+        android:layout_height="260dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/listbox"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DoctorAccount_tvPatientInquiries" />
 

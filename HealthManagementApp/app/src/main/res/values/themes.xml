@@ -13,9 +13,9 @@
         <!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
         <!-- Customize your theme here. -->
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/grey</item>
-        <item name="colorPrimaryVariant">@color/grey</item>
-        <item name="colorOnPrimary">@color/darkGrey</item>
+        <item name="colorPrimary">#AEEEE2</item>
+        <item name="colorPrimaryVariant">#18957C</item>
+        <item name="colorOnPrimary">#18957C</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -23,7 +23,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- More -->
-        <item name="android:colorBackground">@color/darkGrey</item>
+        <item name="android:colorBackground">#7AD9C6</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">@color/lightGrey</item>
         <item name="android:textColorPrimary">@color/white</item>
