@@ -1,2 +1,4 @@
 # CSIS3175-HealthManagementSystem
-Kunal-Ajaykumar, Luan, Mahdi, Ngoc-Vy
+CSIS 3175 Group Project: Health Management System (Java)
+
+Group: Kunal-Ajaykumar, Luan, Mahdi
