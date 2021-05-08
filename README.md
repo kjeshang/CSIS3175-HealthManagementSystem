@@ -1,2 +1,2 @@
-# CSIS3175-Group-Project
+# CSIS3175-HealthManagementSystem
 Kunal-Ajaykumar, Luan, Mahdi, Ngoc-Vy
